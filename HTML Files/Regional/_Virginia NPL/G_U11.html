@@ -1,0 +1,366 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+
+<!-- Public3.master -->
+
+<head><title>
+	Event Schedule
+</title><style id="ctl00_PageStyle">
+    img {border:0px;}
+    .TopUI, .SubUI, A.TopUI:active, A.TopUI:visited, A.SubUI:active, A.SubUI:visited
+    {
+        font-weight: bold;
+        font-size: 13px;
+        font-family: Tahoma, Verdana, MS Sans-Serif;
+        color: #FFFFFF;
+        text-decoration: none;
+    }
+     .SubHeading
+    {
+        font-size: 10pt;
+        font-family: Tahoma, Verdana, Sans-Serif;
+        color: #2d88af;
+        font-weight: bold;
+    }
+
+    .TableHeader
+    {
+        font-size: 9pt;
+        color: white;
+        font-weight: bold;
+        background-color: #2d88af;
+    }
+
+    .TableFooter
+    {
+        font-size: 9pt;
+        background-color: #B9DBE8;
+    }
+
+    .HelpHeading
+    {
+        font-size: 9pt;
+        font-family: Tahoma, Verdana, Sans-Serif;
+        color: #ff8c00;
+        font-weight: bold;
+    }
+
+    .TinyHeading
+    {
+        font-size: 7pt;
+        font-family: Tahoma, Verdana, Sans-Serif;
+        color: #2d88af;
+        font-weight: bold;
+    }
+    
+    .TinyText
+    {
+        font-size: 7pt;
+    }
+    A, A:active, A:visited
+    {
+      color: #336699;
+    }
+
+    A:hover
+    {
+      color: #7DD8FF;
+    }
+
+
+.NoPad
+{
+    margin:0px;
+    padding:0px;
+}
+
+.NormalButton
+{
+    font-size: xx-small;
+    cursor: hand;
+    cursor: pointer;
+}
+
+.OuterBox {
+	width: 900px;
+	margin: auto;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	-ms-border-radius: 20px;
+	-o-border-radius: 20px;
+	border-radius: 20px;	
+	box-shadow: 10px 10px 5px rgba(0,0,0,0.5);
+}
+
+.InnerBox {
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-ms-border-radius: 6px;
+	-o-border-radius: 6px;
+	border-radius: 6px;	
+	background-color: #ffffff;
+	margin: 8px;
+	padding: 6px;
+}
+
+
+
+
+   
+html {
+	background-color:#014B92;
+	height: 100%;
+	background-image: url('/images/backgrounds/got_background_2016.jpg');
+	background-repeat: no-repeat;
+	background-attachment:fixed;
+	background-size:cover;
+}
+
+ .OuterBox {background-color: #9FCF69;}
+
+ body {font-family: Helvetica;font-size:9pt;}
+
+ td {font-family: Helvetica;font-size:9pt;}
+
+ div {font-family: Helvetica;font-size:9pt;}
+
+ A {text-decoration: none;}
+
+ .PageHeading {color: #DCDCDC;}
+
+ .HeadingA {font-size: 10pt;font-family: Helvetica; color:white; background: #014B92;font-weight: bold;}
+
+ .HeadingB {font-size: 10pt;font-family: Helvetica; color:white; background: #9FCF69;font-weight: bold;}
+
+ .HeadingC {font-size: 10pt;font-family: Helvetica; color:white; background: #DCDCDC;font-weight: bold;}
+
+ .LogoBox {min-height:100px;max-height:250px;
+
+background-color:rgb(1, 75, 146);
+}
+
+</style><link rel="stylesheet" href="/css/960_12_col.css" /><link rel="stylesheet" href="/css/events.css" /><link rel="icon" href="/favicon.ico" type="image/x-icon" /><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /></head>
+
+<body topmargin="0" leftmargin="0">
+    <form name="aspnetForm" method="post" action="schedule.aspx?EventID=61925&amp;Gender=Girls&amp;Age=11" id="aspnetForm" class="NoPad">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE3NzQ5MTQwNjcPZBYCZg9kFgQCAg9kFgICAQ8WAh4JaW5uZXJodG1sBfMUDQogICAgaW1nIHtib3JkZXI6MHB4O30NCiAgICAuVG9wVUksIC5TdWJVSSwgQS5Ub3BVSTphY3RpdmUsIEEuVG9wVUk6dmlzaXRlZCwgQS5TdWJVSTphY3RpdmUsIEEuU3ViVUk6dmlzaXRlZA0KICAgIHsNCiAgICAgICAgZm9udC13ZWlnaHQ6IGJvbGQ7DQogICAgICAgIGZvbnQtc2l6ZTogMTNweDsNCiAgICAgICAgZm9udC1mYW1pbHk6IFRhaG9tYSwgVmVyZGFuYSwgTVMgU2Fucy1TZXJpZjsNCiAgICAgICAgY29sb3I6ICNGRkZGRkY7DQogICAgICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTsNCiAgICB9DQogICAgIC5TdWJIZWFkaW5nDQogICAgew0KICAgICAgICBmb250LXNpemU6IDEwcHQ7DQogICAgICAgIGZvbnQtZmFtaWx5OiBUYWhvbWEsIFZlcmRhbmEsIFNhbnMtU2VyaWY7DQogICAgICAgIGNvbG9yOiAjMmQ4OGFmOw0KICAgICAgICBmb250LXdlaWdodDogYm9sZDsNCiAgICB9DQoNCiAgICAuVGFibGVIZWFkZXINCiAgICB7DQogICAgICAgIGZvbnQtc2l6ZTogOXB0Ow0KICAgICAgICBjb2xvcjogd2hpdGU7DQogICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkOw0KICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMmQ4OGFmOw0KICAgIH0NCg0KICAgIC5UYWJsZUZvb3Rlcg0KICAgIHsNCiAgICAgICAgZm9udC1zaXplOiA5cHQ7DQogICAgICAgIGJhY2tncm91bmQtY29sb3I6ICNCOURCRTg7DQogICAgfQ0KDQogICAgLkhlbHBIZWFkaW5nDQogICAgew0KICAgICAgICBmb250LXNpemU6IDlwdDsNCiAgICAgICAgZm9udC1mYW1pbHk6IFRhaG9tYSwgVmVyZGFuYSwgU2Fucy1TZXJpZjsNCiAgICAgICAgY29sb3I6ICNmZjhjMDA7DQogICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkOw0KICAgIH0NCg0KICAgIC5UaW55SGVhZGluZw0KICAgIHsNCiAgICAgICAgZm9udC1zaXplOiA3cHQ7DQogICAgICAgIGZvbnQtZmFtaWx5OiBUYWhvbWEsIFZlcmRhbmEsIFNhbnMtU2VyaWY7DQogICAgICAgIGNvbG9yOiAjMmQ4OGFmOw0KICAgICAgICBmb250LXdlaWdodDogYm9sZDsNCiAgICB9DQogICAgDQogICAgLlRpbnlUZXh0DQogICAgew0KICAgICAgICBmb250LXNpemU6IDdwdDsNCiAgICB9DQogICAgQSwgQTphY3RpdmUsIEE6dmlzaXRlZA0KICAgIHsNCiAgICAgIGNvbG9yOiAjMzM2Njk5Ow0KICAgIH0NCg0KICAgIEE6aG92ZXINCiAgICB7DQogICAgICBjb2xvcjogIzdERDhGRjsNCiAgICB9DQoNCg0KLk5vUGFkDQp7DQogICAgbWFyZ2luOjBweDsNCiAgICBwYWRkaW5nOjBweDsNCn0NCg0KLk5vcm1hbEJ1dHRvbg0Kew0KICAgIGZvbnQtc2l6ZTogeHgtc21hbGw7DQogICAgY3Vyc29yOiBoYW5kOw0KICAgIGN1cnNvcjogcG9pbnRlcjsNCn0NCg0KLk91dGVyQm94IHsNCgl3aWR0aDogOTAwcHg7DQoJbWFyZ2luOiBhdXRvOw0KCS13ZWJraXQtYm9yZGVyLXJhZGl1czogMjBweDsNCgktbW96LWJvcmRlci1yYWRpdXM6IDIwcHg7DQoJLW1zLWJvcmRlci1yYWRpdXM6IDIwcHg7DQoJLW8tYm9yZGVyLXJhZGl1czogMjBweDsNCglib3JkZXItcmFkaXVzOiAyMHB4OwkNCglib3gtc2hhZG93OiAxMHB4IDEwcHggNXB4IHJnYmEoMCwwLDAsMC41KTsNCn0NCg0KLklubmVyQm94IHsNCgktd2Via2l0LWJvcmRlci1yYWRpdXM6IDZweDsNCgktbW96LWJvcmRlci1yYWRpdXM6IDZweDsNCgktbXMtYm9yZGVyLXJhZGl1czogNnB4Ow0KCS1vLWJvcmRlci1yYWRpdXM6IDZweDsNCglib3JkZXItcmFkaXVzOiA2cHg7CQ0KCWJhY2tncm91bmQtY29sb3I6ICNmZmZmZmY7DQoJbWFyZ2luOiA4cHg7DQoJcGFkZGluZzogNnB4Ow0KfQ0KDQoNCg0KDQogICANCmh0bWwgew0KCWJhY2tncm91bmQtY29sb3I6IzAxNEI5MjsNCgloZWlnaHQ6IDEwMCU7DQoJYmFja2dyb3VuZC1pbWFnZTogdXJsKCcvaW1hZ2VzL2JhY2tncm91bmRzL2dvdF9iYWNrZ3JvdW5kXzIwMTYuanBnJyk7DQoJYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDsNCgliYWNrZ3JvdW5kLWF0dGFjaG1lbnQ6Zml4ZWQ7DQoJYmFja2dyb3VuZC1zaXplOmNvdmVyOw0KfQ0KDQogLk91dGVyQm94IHtiYWNrZ3JvdW5kLWNvbG9yOiAjOUZDRjY5O30NCg0KIGJvZHkge2ZvbnQtZmFtaWx5OiBIZWx2ZXRpY2E7Zm9udC1zaXplOjlwdDt9DQoNCiB0ZCB7Zm9udC1mYW1pbHk6IEhlbHZldGljYTtmb250LXNpemU6OXB0O30NCg0KIGRpdiB7Zm9udC1mYW1pbHk6IEhlbHZldGljYTtmb250LXNpemU6OXB0O30NCg0KIEEge3RleHQtZGVjb3JhdGlvbjogbm9uZTt9DQoNCiAuUGFnZUhlYWRpbmcge2NvbG9yOiAjRENEQ0RDO30NCg0KIC5IZWFkaW5nQSB7Zm9udC1zaXplOiAxMHB0O2ZvbnQtZmFtaWx5OiBIZWx2ZXRpY2E7IGNvbG9yOndoaXRlOyBiYWNrZ3JvdW5kOiAjMDE0QjkyO2ZvbnQtd2VpZ2h0OiBib2xkO30NCg0KIC5IZWFkaW5nQiB7Zm9udC1zaXplOiAxMHB0O2ZvbnQtZmFtaWx5OiBIZWx2ZXRpY2E7IGNvbG9yOndoaXRlOyBiYWNrZ3JvdW5kOiAjOUZDRjY5O2ZvbnQtd2VpZ2h0OiBib2xkO30NCg0KIC5IZWFkaW5nQyB7Zm9udC1zaXplOiAxMHB0O2ZvbnQtZmFtaWx5OiBIZWx2ZXRpY2E7IGNvbG9yOndoaXRlOyBiYWNrZ3JvdW5kOiAjRENEQ0RDO2ZvbnQtd2VpZ2h0OiBib2xkO30NCg0KIC5Mb2dvQm94IHttaW4taGVpZ2h0OjEwMHB4O21heC1oZWlnaHQ6MjUwcHg7DQoNCmJhY2tncm91bmQtY29sb3I6cmdiKDEsIDc1LCAxNDYpOw0KfQ0KDQpkAgQPZBYKZg8WBB4Dc3JjBSQvY29udGVudC9kaXJlY3RvcnMvbG9nb3MvbF82MTkyNS5wbmceBXdpZHRoBQM3NTBkAgEPFgIfAAXgBjx0YWJsZSBjZWxscGFkZGluZz0iMCIgY2VsbHNwYWNpbmc9IjAiIGJvcmRlcj0iMCI+ICAgPHRyIGhlaWdodD0iMTMiPiAgICAgICA8dGQgd2lkdGg9IjEwIj4mbmJzcDs8L3RkPiAgICAgICA8dGQgbm93cmFwPjxhIGhyZWY9Ii9ldmVudHMvZGVmYXVsdC5hc3B4P0V2ZW50SUQ9NjE5MjUiIGNsYXNzPSJUb3BVSSI+TWFpbiBNZW51PC9hPjwvdGQ+ICAgICAgIDx0ZCB3aWR0aD0iMTYiPiZuYnNwOyZuYnNwOyZuYnNwOzwvdGQ+ICAgICAgIDx0ZCBub3dyYXA+PGEgaHJlZj0iaHR0cDovL3d3dy52YXByZW1pZXJsZWFndWUuY29tIiBjbGFzcz0iVG9wVUkiIHRhcmdldD0iX2JsYW5rIj5XZWJzaXRlPC9hPjwvdGQ+ICAgICAgIDx0ZCB3aWR0aD0iMTYiPiZuYnNwOyZuYnNwOyZuYnNwOzwvdGQ+ICAgICAgIDx0ZCBub3dyYXA+PGEgaHJlZj0iL2V2ZW50cy9nZXRzY29yZXMuYXNweD9FdmVudElEPTYxOTI1IiBjbGFzcz0iVG9wVUkiPkdldCBTY29yZXM8L2E+PC90ZD4gICAgICAgPHRkIHdpZHRoPSIxNiI+Jm5ic3A7Jm5ic3A7Jm5ic3A7PC90ZD4gICAgICAgICAgICAgICA8dGQgbm93cmFwPjxhIGhyZWY9Ii9ldmVudHMvZmllbGRzLmFzcHg/RXZlbnRJRD02MTkyNSZGaWVsZElEPSIgY2xhc3M9IlRvcFVJIj5FdmVudCBGaWVsZHM8L2E+PC90ZD4gICAgICAgPHRkIHdpZHRoPSIxNiI+Jm5ic3A7Jm5ic3A7Jm5ic3A7PC90ZD4gICAgICAgICAgICAgICA8dGQgbm93cmFwPjxhIGhyZWY9Ii9ldmVudHMvY29udGFjdC5hc3B4P0V2ZW50SUQ9NjE5MjUiIGNsYXNzPSJUb3BVSSI+Q29udGFjdDwvYT48L3RkPiAgICAgICAgICAgICAgIDx0ZCB3aWR0aD0iMTYiPiZuYnNwOyZuYnNwOyZuYnNwOzwvdGQ+ICAgPC90cj48L3RhYmxlPmQCAg8PFgIeBFRleHQFMzxmb250IGNvbG9yPSJibGFjayI+VmlyZ2luaWEgTlBMIC0gRmFsbCAyMDE3PC9mb250PmRkAgMPDxYCHwMFPDxmb250IGNvbG9yPSIjNjY2NjY2Ij44LzEvMjAxNyZuYnNwOy0mbmJzcDsxMi8zMS8yMDE3PC9mb250PmRkAgUPZBYCAgEPDxYCHwMFFTIvMTQvMjAxOCAxMToxNDo0NyBBTWRkZCYjvsIib+MN47wQtP56abrT4Vvj" />
+</div>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="F493263F" />
+</div>
+    
+    
+    <img src="/images/transparent.gif" width="10" height="20" />
+
+    <div class="OuterBox LogoBox" align="center">
+    
+    
+	<div align="center" style="margin-left:-20px;width:100%;padding:0px 20px;max-height:150px;overflow:hidden;">
+	<img src="/content/directors/logos/l_61925.png" id="ctl00_MainLogo" width="750" />
+	</div>
+	
+	</div>
+
+    <img src="/images/transparent.gif" width="10" height="20" />
+	
+	<div class="OuterBox" align="center">
+	
+		<div id="ctl00_MainUI" style="padding: 6px 4px 0px 4px;"><table cellpadding="0" cellspacing="0" border="0">   <tr height="13">       <td width="10">&nbsp;</td>       <td nowrap><a href="/events/default.aspx?EventID=61925" class="TopUI">Main Menu</a></td>       <td width="16">&nbsp;&nbsp;&nbsp;</td>       <td nowrap><a href="http://www.vapremierleague.com" class="TopUI" target="_blank">Website</a></td>       <td width="16">&nbsp;&nbsp;&nbsp;</td>       <td nowrap><a href="/events/getscores.aspx?EventID=61925" class="TopUI">Get Scores</a></td>       <td width="16">&nbsp;&nbsp;&nbsp;</td>               <td nowrap><a href="/events/fields.aspx?EventID=61925&FieldID=" class="TopUI">Event Fields</a></td>       <td width="16">&nbsp;&nbsp;&nbsp;</td>               <td nowrap><a href="/events/contact.aspx?EventID=61925" class="TopUI">Contact</a></td>               <td width="16">&nbsp;&nbsp;&nbsp;</td>   </tr></table></div>
+	
+		<div class="InnerBox" align="left">
+		
+		<table bgcolor="white" width="100%" height="400">
+			<tr>
+				<td valign="top">
+				<span id="ctl00_HeaderEventName" class="EventTitle"><font color="black">Virginia NPL - Fall 2017</font></span><br />
+				<span id="ctl00_HeaderEventDescription" class="EventDescription"><font color="#666666">8/1/2017&nbsp;-&nbsp;12/31/2017</font></span><br />
+				<br />
+
+				<table cellpadding="0" cellspacing="0" width="100%">
+					<tr>
+						<td valign="top">
+						
+						</td>
+						<td valign="top" width="99%">
+						
+
+<script language="javascript">
+var TeamImageZoom = 0;
+
+function ZoomTeamImage()
+{
+    if (TeamImageZoom == 1)
+    {
+        //return to normal size
+        //document.getElementById('TeamPhoto').src = "";
+        TeamPhotoDiv.style.display="none";
+        TeamImageZoom = 0;
+    }
+    else
+    {
+        //increase size to maximum dimensions
+        //alert("zoom");
+        document.getElementById('TeamPhoto').src = "";
+        TeamPhotoDiv.style.display="";
+        TeamImageZoom = 1;
+    }
+}
+
+</script>
+
+<style>
+
+	.score {
+		font-size:16px;
+		font-weight:bold;
+	}
+
+	.GameTagRescheduled {
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		-ms-border-radius: 3px;
+		-o-border-radius: 3px;
+		border-radius: 3px;
+		background-color: #330099;
+		color: #ffffff;
+		font-style: italic;
+		text-align: center;
+		padding: 1px 3px;
+	}
+
+	.GameTagCanceled {
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		-ms-border-radius: 3px;
+		-o-border-radius: 3px;
+		border-radius: 3px;
+		background-color: #CC1100;
+		color: #ffffff;
+		font-style: italic;
+		text-align: center;
+		padding: 1px 3px;
+	}
+
+	.GameTagPostponed {
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		-ms-border-radius: 3px;
+		-o-border-radius: 3px;
+		border-radius: 3px;
+		background-color: #FF9900;
+		color: #ffffff;
+		font-style: italic;
+		text-align: center;
+		padding: 1px 3px;
+	}
+
+	.GameTagTitle {
+		background-color: #37a2b8;
+		color: #ffffff;
+		font-weight: bold;
+		text-align: center;
+	}
+
+/* CATEGORIES HEADER */
+tr.categories th {
+	background: #383838;
+	font-weight: bold;
+	color: white;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
+
+.GameNumber {
+	font-weight:bold;
+	color:#000000;
+}
+
+.MatchTime {
+	font-size:14px;
+}
+
+
+
+</style>
+
+
+<table width="95%">
+    <tr>
+        <td>
+        <div class="container_12" style="position: relative; width: 850px;">	<div class="grid_12" style="width: 850px;"><div class="clear"></div><div class="clear"></div><div style="float: right;">	<ul id="standingsMenu">		<li><a href="results.aspx?EventID=61925&Gender=Girls&Age=11" class="standings">Standings</a></li>		<li><a href="resultsgrid.aspx?EventID=61925&GroupID=671825" class="grid">Results</a></li>		<li><a href="divisioncontacts.aspx?EventID=61925&GroupID=671825" class="print">Contacts</a></li>		<li> <a href="/events/schedule.aspx?EventID=61925&GroupID=671825&print=true" class="print">Print</a></li>	</ul></div><div class="PageHeading">Girls U11 Girls 11U</div><div class="clear"></div><h3 class="bracket">NPL</h3><div class="clear"></div><table border="0" cellspacing="0" cellpadding="10" class="standings">	<tr>		<th colspan="7" class="GroupBoxHeading" style="background-color:#014B92;">Saturday, August 26, 2017</th>	</tr><tr class="categories">	<th width="6%" class="gameTime">Match</th>	<th width="10%" class="gameTime">Time</th>	<th width="30%"><span>Home Team</span></th>	<th width="8%">Results</th>	<th width="30%">Away Team</th>	<th class="location">Location<br /></th></tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1264</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">8:00 AM</div>			</td>			<td class="homeTeam"><a id="Match1264" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4267594&action=Go">AUFC ANNANDALE UNITED FC 07G</a></td>			<td><div><span class="score">0</span>-<span class="score">5</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1264" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1264" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4254197&action=Go">VIRGINIA VSA 07G PRE ACADEMY NPL</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=101914">Stuart HS Overlay #1</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1263</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">10:00 AM</div>			</td>			<td class="homeTeam"><a id="Match1263" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4260036&action=Go">GREAT FALLS 07G FURY BLUE</a></td>			<td><div><span class="score">2</span>-<span class="score">0</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1263" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1263" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4247996&action=Go">RICHMOND KICKERS U11 G ELITE RED '07</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=135491">Nike Park 4 - SS 4A</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1261</div><div class="GameTagTitle" style="background-color:#014B92;">Grist Mill #5B</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">11:00 AM</div>			</td>			<td class="homeTeam"><a id="Match1261" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4298242&action=Go">GSC SPIRIT NPL 07</a></td>			<td><div><span class="score">0</span>-<span class="score">0</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1261" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1261" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4278873&action=Go">VA RUSH 07G BLACK</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=135510">Grist Mill Park #5B GM5B</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1262</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">11:30 AM</div>			</td>			<td class="homeTeam"><a id="Match1262" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4256436&action=Go">VYS PHOENIX '07</a></td>			<td><div><span class="score">0</span>-<span class="score">3</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1262" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1262" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4254479&action=Go">RICHMOND STRIKERS 07 ELITE</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=133775">Jones Branch #2</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1260</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">12:30 PM</div>			</td>			<td class="homeTeam"><a id="Match1260" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4238434&action=Go">PWSI COURAGE 07G NPL</a></td>			<td><div><span class="score">1</span>-<span class="score">0</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1260" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1260" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4250901&action=Go">TIDEWATER SHARKS 2007 G</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=67659">Howison Park T3B</a></td>		</tr></table><table border="0" cellspacing="0" cellpadding="10" class="standings">	<tr>		<th colspan="7" class="GroupBoxHeading" style="background-color:#014B92;">Sunday, August 27, 2017</th>	</tr><tr class="categories">	<th width="6%" class="gameTime">Match</th>	<th width="10%" class="gameTime">Time</th>	<th width="30%"><span>Home Team</span></th>	<th width="8%">Results</th>	<th width="30%">Away Team</th>	<th class="location">Location<br /></th></tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1266</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">9:00 AM</div>			</td>			<td class="homeTeam"><a id="Match1266" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4238434&action=Go">PWSI COURAGE 07G NPL</a></td>			<td><div><span class="score">0</span>-<span class="score">2</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1266" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1266" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4278873&action=Go">VA RUSH 07G BLACK</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=67660">Howison Park T3A</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1269</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">9:30 AM</div>			</td>			<td class="homeTeam"><a id="Match1269" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4260036&action=Go">GREAT FALLS 07G FURY BLUE</a></td>			<td><div><span class="score">2</span>-<span class="score">1</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1269" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1269" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4254479&action=Go">RICHMOND STRIKERS 07 ELITE</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=135491">Nike Park 4 - SS 4A</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1267</div><div class="GameTagTitle" style="background-color:#014B92;">Grist Mill #5B</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">10:00 AM</div>			</td>			<td class="homeTeam"><a id="Match1267" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4298242&action=Go">GSC SPIRIT NPL 07</a></td>			<td><div><span class="score">5</span>-<span class="score">0</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1267" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1267" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4250901&action=Go">TIDEWATER SHARKS 2007 G</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=135510">Grist Mill Park #5B GM5B</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1268</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">11:30 AM</div>			</td>			<td class="homeTeam"><a id="Match1268" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4256436&action=Go">VYS PHOENIX '07</a></td>			<td><div><span class="score">2</span>-<span class="score">0</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1268" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1268" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4247996&action=Go">RICHMOND KICKERS U11 G ELITE RED '07</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=133775">Jones Branch #2</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1270</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">1:00 PM</div>			</td>			<td class="homeTeam"><a id="Match1270" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4257700&action=Go">FC VIRGINIA FCV ELITE 07G</a></td>			<td><div><span class="score">6</span>-<span class="score">1</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1270" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1270" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4267594&action=Go">AUFC ANNANDALE UNITED FC 07G</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=102991">Bles Park #1</a></td>		</tr></table><table border="0" cellspacing="0" cellpadding="10" class="standings">	<tr>		<th colspan="7" class="GroupBoxHeading" style="background-color:#014B92;">Sunday, September 10, 2017</th>	</tr><tr class="categories">	<th width="6%" class="gameTime">Match</th>	<th width="10%" class="gameTime">Time</th>	<th width="30%"><span>Home Team</span></th>	<th width="8%">Results</th>	<th width="30%">Away Team</th>	<th class="location">Location<br /></th></tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1272</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">10:00 AM</div>			</td>			<td class="homeTeam"><a id="Match1272" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4254479&action=Go">RICHMOND STRIKERS 07 ELITE</a></td>			<td><div><span class="score">0</span>-<span class="score">3</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1272" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1272" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4250901&action=Go">TIDEWATER SHARKS 2007 G</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=6502">Striker Park #5</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1274</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">11:20 AM</div>			</td>			<td class="homeTeam"><a id="Match1274" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4254197&action=Go">VIRGINIA VSA 07G PRE ACADEMY NPL</a></td>			<td><div><span class="score">1</span>-<span class="score">2</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1274" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1274" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4238434&action=Go">PWSI COURAGE 07G NPL</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=90151">Long Park F.H. FURR #5B</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1276</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">11:30 AM</div>			</td>			<td class="homeTeam"><a id="Match1276" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4267594&action=Go">AUFC ANNANDALE UNITED FC 07G</a></td>			<td><div><span class="score">1</span>-<span class="score">6</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1276" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1276" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4256436&action=Go">VYS PHOENIX '07</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=101914">Stuart HS Overlay #1</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1275</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">12:00 PM</div>			</td>			<td class="homeTeam"><a id="Match1275" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4257700&action=Go">FC VIRGINIA FCV ELITE 07G</a></td>			<td><div><span class="score">4</span>-<span class="score">1</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1275" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1275" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4298242&action=Go">GSC SPIRIT NPL 07</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=102991">Bles Park #1</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1273</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">3:45 PM</div>			</td>			<td class="homeTeam"><a id="Match1273" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4247996&action=Go">RICHMOND KICKERS U11 G ELITE RED '07</a></td>			<td><div><span class="score">2</span>-<span class="score">3</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1273" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1273" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4278873&action=Go">VA RUSH 07G BLACK</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=20780">Ukrop Park #4</a></td>		</tr></table><table border="0" cellspacing="0" cellpadding="10" class="standings">	<tr>		<th colspan="7" class="GroupBoxHeading" style="background-color:#014B92;">Monday, September 11, 2017</th>	</tr><tr class="categories">	<th width="6%" class="gameTime">Match</th>	<th width="10%" class="gameTime">Time</th>	<th width="30%"><span>Home Team</span></th>	<th width="8%">Results</th>	<th width="30%">Away Team</th>	<th class="location">Location<br /></th></tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1321</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">5:15 PM</div>			</td>			<td class="homeTeam"><a id="Match1321" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4257700&action=Go">FC VIRGINIA FCV ELITE 07G</a></td>			<td><div><span class="score">3</span>-<span class="score">0</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1321" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1321" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4254197&action=Go">VIRGINIA VSA 07G PRE ACADEMY NPL</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=102991">Bles Park #1</a></td>		</tr></table><table border="0" cellspacing="0" cellpadding="10" class="standings">	<tr>		<th colspan="7" class="GroupBoxHeading" style="background-color:#014B92;">Saturday, September 16, 2017</th>	</tr><tr class="categories">	<th width="6%" class="gameTime">Match</th>	<th width="10%" class="gameTime">Time</th>	<th width="30%"><span>Home Team</span></th>	<th width="8%">Results</th>	<th width="30%">Away Team</th>	<th class="location">Location<br /></th></tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1322</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">4:00 PM</div>			</td>			<td class="homeTeam"><a id="Match1322" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4254479&action=Go">RICHMOND STRIKERS 07 ELITE</a></td>			<td><div><span class="score">1</span>-<span class="score">3</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1322" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1322" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4247996&action=Go">RICHMOND KICKERS U11 G ELITE RED '07</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=17155">West Creek #06</a></td>		</tr></table><table border="0" cellspacing="0" cellpadding="10" class="standings">	<tr>		<th colspan="7" class="GroupBoxHeading" style="background-color:#014B92;">Sunday, September 17, 2017</th>	</tr><tr class="categories">	<th width="6%" class="gameTime">Match</th>	<th width="10%" class="gameTime">Time</th>	<th width="30%"><span>Home Team</span></th>	<th width="8%">Results</th>	<th width="30%">Away Team</th>	<th class="location">Location<br /></th></tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1282</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">9:00 AM</div>			</td>			<td class="homeTeam"><a id="Match1282" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4260036&action=Go">GREAT FALLS 07G FURY BLUE</a></td>			<td><div><span class="score">3</span>-<span class="score">0</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1282" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1282" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4267594&action=Go">AUFC ANNANDALE UNITED FC 07G</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=135491">Nike Park 4 - SS 4A</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1280</div><div class="GameTagTitle" style="background-color:#014B92;">Grist Mill #5B</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">10:30 AM</div>			</td>			<td class="homeTeam"><a id="Match1280" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4298242&action=Go">GSC SPIRIT NPL 07</a></td>			<td><div><span class="score">2</span>-<span class="score">3</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1280" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1280" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4254197&action=Go">VIRGINIA VSA 07G PRE ACADEMY NPL</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=135510">Grist Mill Park #5B GM5B</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1279</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">11:30 AM</div>			</td>			<td class="homeTeam"><a id="Match1279" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4250901&action=Go">TIDEWATER SHARKS 2007 G</a></td>			<td><div><span class="score">2</span>-<span class="score">2</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1279" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1279" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4247996&action=Go">RICHMOND KICKERS U11 G ELITE RED '07</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=75618">Warhill Sports Complex #2</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1281</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">12:00 PM</div>			</td>			<td class="homeTeam"><a id="Match1281" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4238434&action=Go">PWSI COURAGE 07G NPL</a></td>			<td><div><span class="score">0</span>-<span class="score">5</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1281" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1281" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4257700&action=Go">FC VIRGINIA FCV ELITE 07G</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=67693">Veterans Park #4</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1278</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">12:50 PM</div>			</td>			<td class="homeTeam"><a id="Match1278" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4278873&action=Go">VA RUSH 07G BLACK</a></td>			<td><div><span class="score">3</span>-<span class="score">2</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1278" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1278" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4254479&action=Go">RICHMOND STRIKERS 07 ELITE</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=41309">HRSC 13A</a></td>		</tr></table><table border="0" cellspacing="0" cellpadding="10" class="standings">	<tr>		<th colspan="7" class="GroupBoxHeading" style="background-color:#014B92;">Saturday, September 23, 2017</th>	</tr><tr class="categories">	<th width="6%" class="gameTime">Match</th>	<th width="10%" class="gameTime">Time</th>	<th width="30%"><span>Home Team</span></th>	<th width="8%">Results</th>	<th width="30%">Away Team</th>	<th class="location">Location<br /></th></tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1320</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">9:00 AM</div>			</td>			<td class="homeTeam"><a id="Match1320" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4238434&action=Go">PWSI COURAGE 07G NPL</a></td>			<td><div><span class="score">1</span>-<span class="score">3</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1320" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1320" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4298242&action=Go">GSC SPIRIT NPL 07</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=67660">Howison Park T3A</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1306</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">11:00 AM</div>			</td>			<td class="homeTeam"><a id="Match1306" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4250901&action=Go">TIDEWATER SHARKS 2007 G</a></td>			<td><div><span class="score">6</span>-<span class="score">1</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1306" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1306" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4267594&action=Go">AUFC ANNANDALE UNITED FC 07G</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=75618">Warhill Sports Complex #2</a></td>		</tr></table><table border="0" cellspacing="0" cellpadding="10" class="standings">	<tr>		<th colspan="7" class="GroupBoxHeading" style="background-color:#014B92;">Sunday, September 24, 2017</th>	</tr><tr class="categories">	<th width="6%" class="gameTime">Match</th>	<th width="10%" class="gameTime">Time</th>	<th width="30%"><span>Home Team</span></th>	<th width="8%">Results</th>	<th width="30%">Away Team</th>	<th class="location">Location<br /></th></tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1288</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">9:00 AM</div>			</td>			<td class="homeTeam"><a id="Match1288" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4260036&action=Go">GREAT FALLS 07G FURY BLUE</a></td>			<td><div><span class="score">2</span>-<span class="score">0</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1288" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1288" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4254197&action=Go">VIRGINIA VSA 07G PRE ACADEMY NPL</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=135491">Nike Park 4 - SS 4A</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1286</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">10:00 AM</div>			</td>			<td class="homeTeam"><a id="Match1286" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4254479&action=Go">RICHMOND STRIKERS 07 ELITE</a></td>			<td><div><span class="score">0</span>-<span class="score">4</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1286" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1286" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4298242&action=Go">GSC SPIRIT NPL 07</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=6502">Striker Park #5</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1289</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">12:00 PM</div>			</td>			<td class="homeTeam"><a id="Match1289" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4256436&action=Go">VYS PHOENIX '07</a></td>			<td><div><span class="score">1</span>-<span class="score">5</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1289" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1289" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4257700&action=Go">FC VIRGINIA FCV ELITE 07G</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=133775">Jones Branch #2</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1287</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">12:15 PM</div>			</td>			<td class="homeTeam"><a id="Match1287" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4247996&action=Go">RICHMOND KICKERS U11 G ELITE RED '07</a></td>			<td><div><span class="score">1</span>-<span class="score">0</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1287" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1287" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4238434&action=Go">PWSI COURAGE 07G NPL</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=20780">Ukrop Park #4</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1285</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">12:50 PM</div>			</td>			<td class="homeTeam"><a id="Match1285" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4278873&action=Go">VA RUSH 07G BLACK</a></td>			<td><div><span class="score">5</span>-<span class="score">2</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1285" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1285" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4267594&action=Go">AUFC ANNANDALE UNITED FC 07G</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=41663">HRSC 13B</a></td>		</tr></table><table border="0" cellspacing="0" cellpadding="10" class="standings">	<tr>		<th colspan="7" class="GroupBoxHeading" style="background-color:#014B92;">Sunday, October 01, 2017</th>	</tr><tr class="categories">	<th width="6%" class="gameTime">Match</th>	<th width="10%" class="gameTime">Time</th>	<th width="30%"><span>Home Team</span></th>	<th width="8%">Results</th>	<th width="30%">Away Team</th>	<th class="location">Location<br /></th></tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1293</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">9:00 AM</div>			</td>			<td class="homeTeam"><a id="Match1293" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4260036&action=Go">GREAT FALLS 07G FURY BLUE</a></td>			<td><div><span class="score">1</span>-<span class="score">1</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1293" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1293" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4238434&action=Go">PWSI COURAGE 07G NPL</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=135491">Nike Park 4 - SS 4A</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1292</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">10:00 AM</div>			</td>			<td class="homeTeam"><a id="Match1292" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4256436&action=Go">VYS PHOENIX '07</a></td>			<td><div><span class="score">0</span>-<span class="score">1</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1292" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1292" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4298242&action=Go">GSC SPIRIT NPL 07</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=135510">Grist Mill Park #5B GM5B</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1290</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">10:00 AM</div>			</td>			<td class="homeTeam"><a id="Match1290" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4267594&action=Go">AUFC ANNANDALE UNITED FC 07G</a></td>			<td><div><span class="score">0</span>-<span class="score">5</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1290" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1290" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4247996&action=Go">RICHMOND KICKERS U11 G ELITE RED '07</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=101914">Stuart HS Overlay #1</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1323</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">11:30 AM</div>			</td>			<td class="homeTeam"><a id="Match1323" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4278873&action=Go">VA RUSH 07G BLACK</a></td>			<td><div><span class="score">2</span>-<span class="score">4</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1323" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1323" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4250901&action=Go">TIDEWATER SHARKS 2007 G</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=41663">HRSC 13B</a></td>		</tr></table><table border="0" cellspacing="0" cellpadding="10" class="standings">	<tr>		<th colspan="7" class="GroupBoxHeading" style="background-color:#014B92;">Saturday, October 14, 2017</th>	</tr><tr class="categories">	<th width="6%" class="gameTime">Match</th>	<th width="10%" class="gameTime">Time</th>	<th width="30%"><span>Home Team</span></th>	<th width="8%">Results</th>	<th width="30%">Away Team</th>	<th class="location">Location<br /></th></tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1319</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">11:00 AM</div>			</td>			<td class="homeTeam"><a id="Match1319" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4250901&action=Go">TIDEWATER SHARKS 2007 G</a></td>			<td><div><span class="score">1</span>-<span class="score">0</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1319" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1319" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4260036&action=Go">GREAT FALLS 07G FURY BLUE</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=75618">Warhill Sports Complex #2</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1318</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">12:50 PM</div>			</td>			<td class="homeTeam"><a id="Match1318" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4278873&action=Go">VA RUSH 07G BLACK</a></td>			<td><div><span class="score">3</span>-<span class="score">0</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1318" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1318" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4256436&action=Go">VYS PHOENIX '07</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=41309">HRSC 13A</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1315</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">3:00 PM</div>			</td>			<td class="homeTeam"><a id="Match1315" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4254479&action=Go">RICHMOND STRIKERS 07 ELITE</a></td>			<td><div><span class="score">0</span>-<span class="score">5</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1315" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1315" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4257700&action=Go">FC VIRGINIA FCV ELITE 07G</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=135464">West Creek #09</a></td>		</tr></table><table border="0" cellspacing="0" cellpadding="10" class="standings">	<tr>		<th colspan="7" class="GroupBoxHeading" style="background-color:#014B92;">Sunday, October 15, 2017</th>	</tr><tr class="categories">	<th width="6%" class="gameTime">Match</th>	<th width="10%" class="gameTime">Time</th>	<th width="30%"><span>Home Team</span></th>	<th width="8%">Results</th>	<th width="30%">Away Team</th>	<th class="location">Location<br /></th></tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1297</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">9:30 AM</div>			</td>			<td class="homeTeam"><a id="Match1297" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4278873&action=Go">VA RUSH 07G BLACK</a></td>			<td><div><span class="score">1</span>-<span class="score">2</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1297" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1297" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4260036&action=Go">GREAT FALLS 07G FURY BLUE</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=10953">HRSC #1</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1296</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">11:30 AM</div>			</td>			<td class="homeTeam"><a id="Match1296" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4250901&action=Go">TIDEWATER SHARKS 2007 G</a></td>			<td><div><span class="score">2</span>-<span class="score">2</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1296" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1296" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4256436&action=Go">VYS PHOENIX '07</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=75618">Warhill Sports Complex #2</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1298</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">12:00 PM</div>			</td>			<td class="homeTeam"><a id="Match1298" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4254479&action=Go">RICHMOND STRIKERS 07 ELITE</a></td>			<td><div><span class="score">2</span>-<span class="score">3</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1298" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1298" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4254197&action=Go">VIRGINIA VSA 07G PRE ACADEMY NPL</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=6502">Striker Park #5</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1299</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">12:15 PM</div>			</td>			<td class="homeTeam"><a id="Match1299" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4247996&action=Go">RICHMOND KICKERS U11 G ELITE RED '07</a></td>			<td><div><span class="score">0</span>-<span class="score">2</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1299" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1299" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4257700&action=Go">FC VIRGINIA FCV ELITE 07G</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=20780">Ukrop Park #4</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1300</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">1:00 PM</div>			</td>			<td class="homeTeam"><a id="Match1300" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4267594&action=Go">AUFC ANNANDALE UNITED FC 07G</a></td>			<td><div><span class="score">0</span>-<span class="score">0</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1300" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1300" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4238434&action=Go">PWSI COURAGE 07G NPL</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=101914">Stuart HS Overlay #1</a></td>		</tr></table><table border="0" cellspacing="0" cellpadding="10" class="standings">	<tr>		<th colspan="7" class="GroupBoxHeading" style="background-color:#014B92;">Sunday, October 22, 2017</th>	</tr><tr class="categories">	<th width="6%" class="gameTime">Match</th>	<th width="10%" class="gameTime">Time</th>	<th width="30%"><span>Home Team</span></th>	<th width="8%">Results</th>	<th width="30%">Away Team</th>	<th class="location">Location<br /></th></tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1302</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">10:00 AM</div>			</td>			<td class="homeTeam"><a id="Match1302" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4254479&action=Go">RICHMOND STRIKERS 07 ELITE</a></td>			<td><div><span class="score">5</span>-<span class="score">1</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1302" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1302" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4238434&action=Go">PWSI COURAGE 07G NPL</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=135464">West Creek #09</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1303</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">10:30 AM</div>			</td>			<td class="homeTeam"><a id="Match1303" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4247996&action=Go">RICHMOND KICKERS U11 G ELITE RED '07</a></td>			<td><div><span class="score">1</span>-<span class="score">1</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1303" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1303" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4298242&action=Go">GSC SPIRIT NPL 07</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=20780">Ukrop Park #4</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1304</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">11:20 AM</div>			</td>			<td class="homeTeam"><a id="Match1304" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4254197&action=Go">VIRGINIA VSA 07G PRE ACADEMY NPL</a></td>			<td><div><span class="score">2</span>-<span class="score">1</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1304" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1304" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4256436&action=Go">VYS PHOENIX '07</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=90150">Long Park F.H. FURR #5A</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1305</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">12:30 PM</div>			</td>			<td class="homeTeam"><a id="Match1305" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4257700&action=Go">FC VIRGINIA FCV ELITE 07G</a></td>			<td><div><span class="score">1</span>-<span class="score">3</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1305" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1305" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4260036&action=Go">GREAT FALLS 07G FURY BLUE</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=102991">Bles Park #1</a></td>		</tr></table><table border="0" cellspacing="0" cellpadding="10" class="standings">	<tr>		<th colspan="7" class="GroupBoxHeading" style="background-color:#014B92;">Saturday, October 28, 2017</th>	</tr><tr class="categories">	<th width="6%" class="gameTime">Match</th>	<th width="10%" class="gameTime">Time</th>	<th width="30%"><span>Home Team</span></th>	<th width="8%">Results</th>	<th width="30%">Away Team</th>	<th class="location">Location<br /></th></tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1294</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">11:20 AM</div>			</td>			<td class="homeTeam"><a id="Match1294" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4254197&action=Go">VIRGINIA VSA 07G PRE ACADEMY NPL</a></td>			<td><div><span class="score">3</span>-<span class="score">0</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1294" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1294" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4278873&action=Go">VA RUSH 07G BLACK</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=90150">Long Park F.H. FURR #5A</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1295</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">12:30 PM</div>			</td>			<td class="homeTeam"><a id="Match1295" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4257700&action=Go">FC VIRGINIA FCV ELITE 07G</a></td>			<td><div><span class="score">4</span>-<span class="score">0</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1295" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1295" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4250901&action=Go">TIDEWATER SHARKS 2007 G</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=102991">Bles Park #1</a></td>		</tr></table><table border="0" cellspacing="0" cellpadding="10" class="standings">	<tr>		<th colspan="7" class="GroupBoxHeading" style="background-color:#014B92;">Sunday, October 29, 2017</th>	</tr><tr class="categories">	<th width="6%" class="gameTime">Match</th>	<th width="10%" class="gameTime">Time</th>	<th width="30%"><span>Home Team</span></th>	<th width="8%">Results</th>	<th width="30%">Away Team</th>	<th class="location">Location<br /></th></tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1313</div><div class="GameTagTitle" style="background-color:#014B92;">Grist Mill #5B</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">9:00 AM</div>			</td>			<td class="homeTeam"><a id="Match1313" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4298242&action=Go">GSC SPIRIT NPL 07</a></td>			<td><div><span class="score">0</span>-<span class="score">1</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1313" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1313" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4260036&action=Go">GREAT FALLS 07G FURY BLUE</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=135510">Grist Mill Park #5B GM5B</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1308</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">11:20 AM</div>			</td>			<td class="homeTeam"><a id="Match1308" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4254197&action=Go">VIRGINIA VSA 07G PRE ACADEMY NPL</a></td>			<td><div><span class="score">1</span>-<span class="score">1</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1308" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1308" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4250901&action=Go">TIDEWATER SHARKS 2007 G</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=90150">Long Park F.H. FURR #5A</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1312</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">12:00 PM</div>			</td>			<td class="homeTeam"><a id="Match1312" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4238434&action=Go">PWSI COURAGE 07G NPL</a></td>			<td><div><span class="score">3</span>-<span class="score">1</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1312" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1312" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4256436&action=Go">VYS PHOENIX '07</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=67693">Veterans Park #4</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1310</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">1:00 PM</div>			</td>			<td class="homeTeam"><a id="Match1310" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4267594&action=Go">AUFC ANNANDALE UNITED FC 07G</a></td>			<td><div><span class="score">1</span>-<span class="score">4</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1310" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1310" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4254479&action=Go">RICHMOND STRIKERS 07 ELITE</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=101914">Stuart HS Overlay #1</a></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1309</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">2:00 PM</div>			</td>			<td class="homeTeam"><a id="Match1309" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4257700&action=Go">FC VIRGINIA FCV ELITE 07G</a></td>			<td><div><span class="score">3</span>-<span class="score">1</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1309" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1309" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4278873&action=Go">VA RUSH 07G BLACK</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=138891">Nike Park 7 - SS 7B</a></td>		</tr></table><table border="0" cellspacing="0" cellpadding="10" class="standings">	<tr>		<th colspan="7" class="GroupBoxHeading" style="background-color:#014B92;">Sunday, November 05, 2017</th>	</tr><tr class="categories">	<th width="6%" class="gameTime">Match</th>	<th width="10%" class="gameTime">Time</th>	<th width="30%"><span>Home Team</span></th>	<th width="8%">Results</th>	<th width="30%">Away Team</th>	<th class="location">Location<br /></th></tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1317</div><div class="GameTagTitle" style="background-color:#014B92;">Grist Mill #5B</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">10:30 AM</div>			</td>			<td class="homeTeam"><a id="Match1317" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4298242&action=Go">GSC SPIRIT NPL 07</a></td>			<td><div><span class="score">3</span>-<span class="score">0</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1317" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1317" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4267594&action=Go">AUFC ANNANDALE UNITED FC 07G</a></td>			<td class="location"><div class="Unavailable">Unassigned</div></td>		</tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1325</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">2:00 PM</div>			</td>			<td class="homeTeam"><a id="Match1325" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4260036&action=Go">GREAT FALLS 07G FURY BLUE</a></td>			<td><div><span class="score">5</span>-<span class="score">1</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1325" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1325" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4256436&action=Go">VYS PHOENIX '07</a></td>			<td class="location"><a href="fields.aspx?eventid=61925&FieldID=138890">Nike Park 7 - SS 7A</a></td>		</tr></table><table border="0" cellspacing="0" cellpadding="10" class="standings">	<tr>		<th colspan="7" class="GroupBoxHeading" style="background-color:#014B92;">Sunday, November 12, 2017</th>	</tr><tr class="categories">	<th width="6%" class="gameTime">Match</th>	<th width="10%" class="gameTime">Time</th>	<th width="30%"><span>Home Team</span></th>	<th width="8%">Results</th>	<th width="30%">Away Team</th>	<th class="location">Location<br /></th></tr>		<tr>			<td class="gameTime"><div class="GameNumber">#1314</div>			</td>			<td class="gameTime" nowrap><div class="MatchTime">3:45 PM</div>			</td>			<td class="homeTeam"><a id="Match1314" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4247996&action=Go">RICHMOND KICKERS U11 G ELITE RED '07</a></td>			<td><div><span class="score">1</span>-<span class="score">0</span></div><div style="margin-top:3px;"><a href="/events/schedule.aspx?EventID=61925&FieldID=0&Gender=Girls&Age=11&MatchNumber=1314" class="RoundLinkSmall">Details</a></div>			</td>			<td class="awayTeam"><a id="Match1314" href="/events/schedule.aspx?eventid=61925&FieldID=0&applicationID=4254197&action=Go">VIRGINIA VSA 07G PRE ACADEMY NPL</a></td>			<td class="location"><div class="Unavailable">Unassigned</div></td>		</tr>	</table>	</div></div><div class="clear"></div>
+        <br />
+        <br />
+        <div align="center">
+        <span id="ctl00_MainBody_TimeStamp" class="TinyText" style="color:Gray;">2/14/2018 11:14:47 AM</span>
+        
+        </div>
+        </td>
+    </tr>
+</table>
+
+
+						</td>
+					</tr>
+				</table>
+		
+				</td>
+			</tr>
+		</table>
+		
+		</div>
+		
+		<div align="right" style="padding-right:20px;"><a href="http://www.gotsoccer.com/" target="_blank"><img src="/images/logos/gotsoccer_powered_by_2017_small2_wh2.png"></a></div>
+		
+	</div>
+            
+    
+    <br />
+    <br />
+    <br />
+    
+    </form>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20472997-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<!-- Begin comScore Tag -->
+<script>
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "9563615" });
+  (function() {
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+    el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  <img src="http://b.scorecardresearch.com/p?c1=2&c2=9563615&cv=2.0&cj=1" />
+</noscript>
+<!-- End comScore Tag -->
+
+    
+</body>
+
+
+</html>

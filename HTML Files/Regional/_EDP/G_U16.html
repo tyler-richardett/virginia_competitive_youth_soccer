@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+
+<!-- Public3.master -->
+
+<head><title>
+	Event Schedule
+</title><style id="ctl00_PageStyle">
+    img {border:0px;}
+    .TopUI, .SubUI, A.TopUI:active, A.TopUI:visited, A.SubUI:active, A.SubUI:visited
+    {
+        font-weight: bold;
+        font-size: 13px;
+        font-family: Tahoma, Verdana, MS Sans-Serif;
+        color: #FFFFFF;
+        text-decoration: none;
+    }
+     .SubHeading
+    {
+        font-size: 10pt;
+        font-family: Tahoma, Verdana, Sans-Serif;
+        color: #2d88af;
+        font-weight: bold;
+    }
+
+    .TableHeader
+    {
+        font-size: 9pt;
+        color: white;
+        font-weight: bold;
+        background-color: #2d88af;
+    }
+
+    .TableFooter
+    {
+        font-size: 9pt;
+        background-color: #B9DBE8;
+    }
+
+    .HelpHeading
+    {
+        font-size: 9pt;
+        font-family: Tahoma, Verdana, Sans-Serif;
+        color: #ff8c00;
+        font-weight: bold;
+    }
+
+    .TinyHeading
+    {
+        font-size: 7pt;
+        font-family: Tahoma, Verdana, Sans-Serif;
+        color: #2d88af;
+        font-weight: bold;
+    }
+    
+    .TinyText
+    {
+        font-size: 7pt;
+    }
+    A, A:active, A:visited
+    {
+      color: #336699;
+    }
+
+    A:hover
+    {
+      color: #7DD8FF;
+    }
+
+
+.NoPad
+{
+    margin:0px;
+    padding:0px;
+}
+
+.NormalButton
+{
+    font-size: xx-small;
+    cursor: hand;
+    cursor: pointer;
+}
+
+.OuterBox {
+	width: 900px;
+	margin: auto;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	-ms-border-radius: 20px;
+	-o-border-radius: 20px;
+	border-radius: 20px;	
+	box-shadow: 10px 10px 5px rgba(0,0,0,0.5);
+}
+
+.InnerBox {
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-ms-border-radius: 6px;
+	-o-border-radius: 6px;
+	border-radius: 6px;	
+	background-color: #ffffff;
+	margin: 8px;
+	padding: 6px;
+}
+
+
+
+
+   
+html {
+	background-color:;
+	height: 100%;
+	background-image: url('/images/backgrounds/got_background_2016.jpg');
+	background-repeat: no-repeat;
+	background-attachment:fixed;
+	background-size:cover;
+}
+
+ .OuterBox {background-color: #333333;}
+
+ body {font-family: Tahoma;font-size:9pt;}
+
+ td {font-family: Tahoma;font-size:9pt;}
+
+ div {font-family: Tahoma;font-size:9pt;}
+
+ A {text-decoration: none;}
+
+ .PageHeading {color: #263658;}
+
+ .HeadingA {font-size: 10pt;font-family: Tahoma; color:white; background: ;font-weight: bold;}
+
+ .HeadingB {font-size: 10pt;font-family: Tahoma; color:white; background: #333333;font-weight: bold;}
+
+ .HeadingC {font-size: 10pt;font-family: Tahoma; color:white; background: #263658;font-weight: bold;}
+
+ .LogoBox {min-height:100px;max-height:250px;
+}
+
+</style><link rel="stylesheet" href="/css/960_12_col.css" /><link rel="stylesheet" href="/css/events.css" /><link rel="icon" href="/favicon.ico" type="image/x-icon" /><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /></head>
+
+<body topmargin="0" leftmargin="0">
+    <form name="aspnetForm" method="post" action="schedule.aspx?EventID=59881&amp;Gender=Girls&amp;Age=16" id="aspnetForm" class="NoPad">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE3NzQ5MTQwNjcPZBYCZg9kFgQCAg9kFgICAQ8WAh4JaW5uZXJodG1sBa4UDQogICAgaW1nIHtib3JkZXI6MHB4O30NCiAgICAuVG9wVUksIC5TdWJVSSwgQS5Ub3BVSTphY3RpdmUsIEEuVG9wVUk6dmlzaXRlZCwgQS5TdWJVSTphY3RpdmUsIEEuU3ViVUk6dmlzaXRlZA0KICAgIHsNCiAgICAgICAgZm9udC13ZWlnaHQ6IGJvbGQ7DQogICAgICAgIGZvbnQtc2l6ZTogMTNweDsNCiAgICAgICAgZm9udC1mYW1pbHk6IFRhaG9tYSwgVmVyZGFuYSwgTVMgU2Fucy1TZXJpZjsNCiAgICAgICAgY29sb3I6ICNGRkZGRkY7DQogICAgICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTsNCiAgICB9DQogICAgIC5TdWJIZWFkaW5nDQogICAgew0KICAgICAgICBmb250LXNpemU6IDEwcHQ7DQogICAgICAgIGZvbnQtZmFtaWx5OiBUYWhvbWEsIFZlcmRhbmEsIFNhbnMtU2VyaWY7DQogICAgICAgIGNvbG9yOiAjMmQ4OGFmOw0KICAgICAgICBmb250LXdlaWdodDogYm9sZDsNCiAgICB9DQoNCiAgICAuVGFibGVIZWFkZXINCiAgICB7DQogICAgICAgIGZvbnQtc2l6ZTogOXB0Ow0KICAgICAgICBjb2xvcjogd2hpdGU7DQogICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkOw0KICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMmQ4OGFmOw0KICAgIH0NCg0KICAgIC5UYWJsZUZvb3Rlcg0KICAgIHsNCiAgICAgICAgZm9udC1zaXplOiA5cHQ7DQogICAgICAgIGJhY2tncm91bmQtY29sb3I6ICNCOURCRTg7DQogICAgfQ0KDQogICAgLkhlbHBIZWFkaW5nDQogICAgew0KICAgICAgICBmb250LXNpemU6IDlwdDsNCiAgICAgICAgZm9udC1mYW1pbHk6IFRhaG9tYSwgVmVyZGFuYSwgU2Fucy1TZXJpZjsNCiAgICAgICAgY29sb3I6ICNmZjhjMDA7DQogICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkOw0KICAgIH0NCg0KICAgIC5UaW55SGVhZGluZw0KICAgIHsNCiAgICAgICAgZm9udC1zaXplOiA3cHQ7DQogICAgICAgIGZvbnQtZmFtaWx5OiBUYWhvbWEsIFZlcmRhbmEsIFNhbnMtU2VyaWY7DQogICAgICAgIGNvbG9yOiAjMmQ4OGFmOw0KICAgICAgICBmb250LXdlaWdodDogYm9sZDsNCiAgICB9DQogICAgDQogICAgLlRpbnlUZXh0DQogICAgew0KICAgICAgICBmb250LXNpemU6IDdwdDsNCiAgICB9DQogICAgQSwgQTphY3RpdmUsIEE6dmlzaXRlZA0KICAgIHsNCiAgICAgIGNvbG9yOiAjMzM2Njk5Ow0KICAgIH0NCg0KICAgIEE6aG92ZXINCiAgICB7DQogICAgICBjb2xvcjogIzdERDhGRjsNCiAgICB9DQoNCg0KLk5vUGFkDQp7DQogICAgbWFyZ2luOjBweDsNCiAgICBwYWRkaW5nOjBweDsNCn0NCg0KLk5vcm1hbEJ1dHRvbg0Kew0KICAgIGZvbnQtc2l6ZTogeHgtc21hbGw7DQogICAgY3Vyc29yOiBoYW5kOw0KICAgIGN1cnNvcjogcG9pbnRlcjsNCn0NCg0KLk91dGVyQm94IHsNCgl3aWR0aDogOTAwcHg7DQoJbWFyZ2luOiBhdXRvOw0KCS13ZWJraXQtYm9yZGVyLXJhZGl1czogMjBweDsNCgktbW96LWJvcmRlci1yYWRpdXM6IDIwcHg7DQoJLW1zLWJvcmRlci1yYWRpdXM6IDIwcHg7DQoJLW8tYm9yZGVyLXJhZGl1czogMjBweDsNCglib3JkZXItcmFkaXVzOiAyMHB4OwkNCglib3gtc2hhZG93OiAxMHB4IDEwcHggNXB4IHJnYmEoMCwwLDAsMC41KTsNCn0NCg0KLklubmVyQm94IHsNCgktd2Via2l0LWJvcmRlci1yYWRpdXM6IDZweDsNCgktbW96LWJvcmRlci1yYWRpdXM6IDZweDsNCgktbXMtYm9yZGVyLXJhZGl1czogNnB4Ow0KCS1vLWJvcmRlci1yYWRpdXM6IDZweDsNCglib3JkZXItcmFkaXVzOiA2cHg7CQ0KCWJhY2tncm91bmQtY29sb3I6ICNmZmZmZmY7DQoJbWFyZ2luOiA4cHg7DQoJcGFkZGluZzogNnB4Ow0KfQ0KDQoNCg0KDQogICANCmh0bWwgew0KCWJhY2tncm91bmQtY29sb3I6Ow0KCWhlaWdodDogMTAwJTsNCgliYWNrZ3JvdW5kLWltYWdlOiB1cmwoJy9pbWFnZXMvYmFja2dyb3VuZHMvZ290X2JhY2tncm91bmRfMjAxNi5qcGcnKTsNCgliYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0Ow0KCWJhY2tncm91bmQtYXR0YWNobWVudDpmaXhlZDsNCgliYWNrZ3JvdW5kLXNpemU6Y292ZXI7DQp9DQoNCiAuT3V0ZXJCb3gge2JhY2tncm91bmQtY29sb3I6ICMzMzMzMzM7fQ0KDQogYm9keSB7Zm9udC1mYW1pbHk6IFRhaG9tYTtmb250LXNpemU6OXB0O30NCg0KIHRkIHtmb250LWZhbWlseTogVGFob21hO2ZvbnQtc2l6ZTo5cHQ7fQ0KDQogZGl2IHtmb250LWZhbWlseTogVGFob21hO2ZvbnQtc2l6ZTo5cHQ7fQ0KDQogQSB7dGV4dC1kZWNvcmF0aW9uOiBub25lO30NCg0KIC5QYWdlSGVhZGluZyB7Y29sb3I6ICMyNjM2NTg7fQ0KDQogLkhlYWRpbmdBIHtmb250LXNpemU6IDEwcHQ7Zm9udC1mYW1pbHk6IFRhaG9tYTsgY29sb3I6d2hpdGU7IGJhY2tncm91bmQ6IDtmb250LXdlaWdodDogYm9sZDt9DQoNCiAuSGVhZGluZ0Ige2ZvbnQtc2l6ZTogMTBwdDtmb250LWZhbWlseTogVGFob21hOyBjb2xvcjp3aGl0ZTsgYmFja2dyb3VuZDogIzMzMzMzMztmb250LXdlaWdodDogYm9sZDt9DQoNCiAuSGVhZGluZ0Mge2ZvbnQtc2l6ZTogMTBwdDtmb250LWZhbWlseTogVGFob21hOyBjb2xvcjp3aGl0ZTsgYmFja2dyb3VuZDogIzI2MzY1ODtmb250LXdlaWdodDogYm9sZDt9DQoNCiAuTG9nb0JveCB7bWluLWhlaWdodDoxMDBweDttYXgtaGVpZ2h0OjI1MHB4Ow0KfQ0KDQpkAgQPZBYKZg8WBB4Dc3JjBSQvY29udGVudC9kaXJlY3RvcnMvbG9nb3MvbF80NTM1Mi5wbmceBmhlaWdodAUCODZkAgEPFgIfAAWFCDx0YWJsZSBjZWxscGFkZGluZz0iMCIgY2VsbHNwYWNpbmc9IjAiIGJvcmRlcj0iMCI+ICAgPHRyIGhlaWdodD0iMTMiPiAgICAgICA8dGQgd2lkdGg9IjEwIj4mbmJzcDs8L3RkPiAgICAgICA8dGQgbm93cmFwPjxhIGhyZWY9Ii9ldmVudHMvZGVmYXVsdC5hc3B4P0V2ZW50SUQ9NTk4ODEiIGNsYXNzPSJUb3BVSSI+TWFpbiBNZW51PC9hPjwvdGQ+ICAgICAgIDx0ZCB3aWR0aD0iMTYiPiZuYnNwOyZuYnNwOyZuYnNwOzwvdGQ+ICAgICAgIDx0ZCBub3dyYXA+PGEgaHJlZj0iaHR0cDovL2VkcHNvY2Nlci5jb20iIGNsYXNzPSJUb3BVSSIgdGFyZ2V0PSJfYmxhbmsiPldlYnNpdGU8L2E+PC90ZD4gICAgICAgPHRkIHdpZHRoPSIxNiI+Jm5ic3A7Jm5ic3A7Jm5ic3A7PC90ZD4gICAgICAgPHRkIG5vd3JhcD48YSBocmVmPSIvZXZlbnRzL2dldHNjb3Jlcy5hc3B4P0V2ZW50SUQ9NTk4ODEiIGNsYXNzPSJUb3BVSSI+R2V0IFNjb3JlczwvYT48L3RkPiAgICAgICA8dGQgd2lkdGg9IjE2Ij4mbmJzcDsmbmJzcDsmbmJzcDs8L3RkPiAgICAgICAgICAgICAgIDx0ZCBub3dyYXA+PGEgaHJlZj0iL2V2ZW50cy9maWVsZHMuYXNweD9FdmVudElEPTU5ODgxJkZpZWxkSUQ9IiBjbGFzcz0iVG9wVUkiPkV2ZW50IEZpZWxkczwvYT48L3RkPiAgICAgICA8dGQgd2lkdGg9IjE2Ij4mbmJzcDsmbmJzcDsmbmJzcDs8L3RkPiAgICAgICAgPHRkIG5vd3JhcD48YSBocmVmPSJodHRwOi8vbWFwcy5nb3RzcG9ydC5jb20vY2x1YnNpdGUvTGVhZ3VlRGlyLmFzcHg/RXZlbnRJRD01OTg4MSIgY2xhc3M9IlRvcFVJIj5DbHViIERpcmVjdG9yeTwvYT48L3RkPiAgICAgICAgPHRkIHdpZHRoPSIxNiI+Jm5ic3A7Jm5ic3A7Jm5ic3A7PC90ZD4gICAgICAgICAgICAgICA8dGQgbm93cmFwPjxhIGhyZWY9Ii9ldmVudHMvY29udGFjdC5hc3B4P0V2ZW50SUQ9NTk4ODEiIGNsYXNzPSJUb3BVSSI+Q29udGFjdDwvYT48L3RkPiAgICAgICAgICAgICAgIDx0ZCB3aWR0aD0iMTYiPiZuYnNwOyZuYnNwOyZuYnNwOzwvdGQ+ICAgPC90cj48L3RhYmxlPmQCAg8PFgIeBFRleHQFLzxmb250IGNvbG9yPSJibGFjayI+RURQIExFQUdVRSAyMDE3LTIwMTg8L2ZvbnQ+ZGQCAw8PFgIfAwXKAjxmb250IGNvbG9yPSIjNjY2NjY2Ij5FRFAgPSBFRFAgRGl2IDEgRGl2IDIgKGhpZ2hlc3QpIA0KRURQIFByZW1pZXIgID0gUHJlbWllciAxIGFuZCBQcmVtaWVyIDINCkVEUCBDaGFtcGlvbnNoaXAgPSBDaGFtcGlvbnNoaXAgZGl2aXNpb25zDQoNClUxMS1VMTQgKDIwMDctMjAwNCkgIEZhbGwgYW5kIFNwcmluZw0KVTE1ICgyMDAzKSAgRmFsbCBhbmQgU3ByaW5nDQpVMTUgKDIwMDMpIE9wdGlvbmFsIExhdGUgRmFsbCBhbmQgU3ByaW5nIChOb3YgU3RhcnQpDQpVMTYtVTE5ICgyMDAyLTE5OTkpIE9wdGlvbmFsIExhdGUgRmFsbCBhbmQgU3ByaW5nIChOb3YgU3RhcnQpPC9mb250PmRkAgUPZBYCAgEPDxYCHwMFFTIvMTQvMjAxOCAxMTozMzo0NCBBTWRkZLk9z/VSGdwbDjmzo64HcF+BuC1i" />
+</div>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="F493263F" />
+</div>
+    
+    
+    <img src="/images/transparent.gif" width="10" height="20" />
+
+    <div class="OuterBox LogoBox" align="center">
+    
+    
+	<div align="center" style="margin-left:-20px;width:100%;padding:0px 20px;max-height:150px;overflow:hidden;">
+	<img src="/content/directors/logos/l_45352.png" id="ctl00_MainLogo" height="86" />
+	</div>
+	
+	</div>
+
+    <img src="/images/transparent.gif" width="10" height="20" />
+	
+	<div class="OuterBox" align="center">
+	
+		<div id="ctl00_MainUI" style="padding: 6px 4px 0px 4px;"><table cellpadding="0" cellspacing="0" border="0">   <tr height="13">       <td width="10">&nbsp;</td>       <td nowrap><a href="/events/default.aspx?EventID=59881" class="TopUI">Main Menu</a></td>       <td width="16">&nbsp;&nbsp;&nbsp;</td>       <td nowrap><a href="http://edpsoccer.com" class="TopUI" target="_blank">Website</a></td>       <td width="16">&nbsp;&nbsp;&nbsp;</td>       <td nowrap><a href="/events/getscores.aspx?EventID=59881" class="TopUI">Get Scores</a></td>       <td width="16">&nbsp;&nbsp;&nbsp;</td>               <td nowrap><a href="/events/fields.aspx?EventID=59881&FieldID=" class="TopUI">Event Fields</a></td>       <td width="16">&nbsp;&nbsp;&nbsp;</td>        <td nowrap><a href="http://maps.gotsport.com/clubsite/LeagueDir.aspx?EventID=59881" class="TopUI">Club Directory</a></td>        <td width="16">&nbsp;&nbsp;&nbsp;</td>               <td nowrap><a href="/events/contact.aspx?EventID=59881" class="TopUI">Contact</a></td>               <td width="16">&nbsp;&nbsp;&nbsp;</td>   </tr></table></div>
+	
+		<div class="InnerBox" align="left">
+		
+		<table bgcolor="white" width="100%" height="400">
+			<tr>
+				<td valign="top">
+				<span id="ctl00_HeaderEventName" class="EventTitle"><font color="black">EDP LEAGUE 2017-2018</font></span><br />
+				<span id="ctl00_HeaderEventDescription" class="EventDescription"><font color="#666666">EDP = EDP Div 1 Div 2 (highest) 
+EDP Premier  = Premier 1 and Premier 2
+EDP Championship = Championship divisions
+
+U11-U14 (2007-2004)  Fall and Spring
+U15 (2003)  Fall and Spring
+U15 (2003) Optional Late Fall and Spring (Nov Start)
+U16-U19 (2002-1999) Optional Late Fall and Spring (Nov Start)</font></span><br />
+				<br />
+
+				<table cellpadding="0" cellspacing="0" width="100%">
+					<tr>
+						<td valign="top">
+						
+						</td>
+						<td valign="top" width="99%">
+						
+
+<script language="javascript">
+var TeamImageZoom = 0;
+
+function ZoomTeamImage()
+{
+    if (TeamImageZoom == 1)
+    {
+        //return to normal size
+        //document.getElementById('TeamPhoto').src = "";
+        TeamPhotoDiv.style.display="none";
+        TeamImageZoom = 0;
+    }
+    else
+    {
+        //increase size to maximum dimensions
+        //alert("zoom");
+        document.getElementById('TeamPhoto').src = "";
+        TeamPhotoDiv.style.display="";
+        TeamImageZoom = 1;
+    }
+}
+
+</script>
+
+<style>
+
+	.score {
+		font-size:16px;
+		font-weight:bold;
+	}
+
+	.GameTagRescheduled {
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		-ms-border-radius: 3px;
+		-o-border-radius: 3px;
+		border-radius: 3px;
+		background-color: #330099;
+		color: #ffffff;
+		font-style: italic;
+		text-align: center;
+		padding: 1px 3px;
+	}
+
+	.GameTagCanceled {
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		-ms-border-radius: 3px;
+		-o-border-radius: 3px;
+		border-radius: 3px;
+		background-color: #CC1100;
+		color: #ffffff;
+		font-style: italic;
+		text-align: center;
+		padding: 1px 3px;
+	}
+
+	.GameTagPostponed {
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		-ms-border-radius: 3px;
+		-o-border-radius: 3px;
+		border-radius: 3px;
+		background-color: #FF9900;
+		color: #ffffff;
+		font-style: italic;
+		text-align: center;
+		padding: 1px 3px;
+	}
+
+	.GameTagTitle {
+		background-color: #37a2b8;
+		color: #ffffff;
+		font-weight: bold;
+		text-align: center;
+	}
+
+/* CATEGORIES HEADER */
+tr.categories th {
+	background: #383838;
+	font-weight: bold;
+	color: white;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
+
+.GameNumber {
+	font-weight:bold;
+	color:#000000;
+}
+
+.MatchTime {
+	font-size:14px;
+}
+
+
+
+</style>
+
+
+<table width="95%">
+    <tr>
+        <td>
+        <table width="100%"><tr>    <td colspan="8"><font class="PageHeading">1/27/2017</font></td></tr><tr>    <td colspan="8"><table width="100%">    <tr>        <td><table bgcolor="#263658" cellspacing="1" cellpadding="0">    <tr>        <td bgcolor="white"><img src="/images/transparent.gif" width="10" height="10"/></td>    </tr></table>        </td>        <td nowrap><font class="SubHeading">Girls U16 2002 Late Fall Games</font>        </td>        <td width="99%">&nbsp;</td>    </tr></table></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#f5f5f5" class="gameS"><td bgcolor="#dcdcdc">#8840&nbsp;</td><td nowrap><div>5:00 PM</div></td><td><a id="Match8840" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4155248&action=Go">FC SPORTIKA ACADEMY 2002G</a></td><td>4</td><td><a id="Match8840" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4271124&action=Go">WARRINGTON WHITE WILDCATS</a></td><td>1</td><td><a href="fields.aspx?eventid=59881&FieldID=124937">Sportika Sports </a></td><td></td></tr><tr>    <td colspan="8"><font class="PageHeading">10/29/2017</font></td></tr><tr>    <td colspan="8"><table width="100%">    <tr>        <td><table bgcolor="#263658" cellspacing="1" cellpadding="0">    <tr>        <td bgcolor="white"><img src="/images/transparent.gif" width="10" height="10"/></td>    </tr></table>        </td>        <td nowrap><font class="SubHeading">Girls U16 2002 Crossover Games</font>        </td>        <td width="99%">&nbsp;</td>    </tr></table></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#ffffff" class="games2"><td bgcolor="#dcdcdc">#8208&nbsp;<br><font class="TinyHeading">MOSL</font></td><td nowrap><div>10:30 AM</div></td><td><a id="Match8208" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4138252&action=Go">BALTIMORE BAYS LIGHTNING</a></td><td>3</td><td><a id="Match8208" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4340356&action=Go">MD RUSH MONTGOMERY '02G DRAGONS</a></td><td>3</td><td><a href="fields.aspx?eventid=59881&FieldID=114183">Barrie School Field 01</a></td><td></td></tr><tr>    <td colspan="8"><font class="PageHeading">11/4/2017</font></td></tr><tr>    <td colspan="8"><table width="100%">    <tr>        <td><table bgcolor="#263658" cellspacing="1" cellpadding="0">    <tr>        <td bgcolor="white"><img src="/images/transparent.gif" width="10" height="10"/></td>    </tr></table>        </td>        <td nowrap><font class="SubHeading">Girls U16 2002 Late Fall Games</font>        </td>        <td width="99%">&nbsp;</td>    </tr></table></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#f5f5f5" class="gameS"><td bgcolor="#dcdcdc">#8846&nbsp;</td><td nowrap><div>3:00 PM</div></td><td><a id="Match8846" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4146148&action=Go">FC BERNA LEGACY 02G GOLD</a></td><td>0</td><td><a id="Match8846" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4145834&action=Go">DUSC G2002 BLUE</a></td><td>1</td><td><a href="fields.aspx?eventid=59881&FieldID=86619">Mountain Park </a></td><td></td></tr><tr>    <td colspan="8"><table width="100%">    <tr>        <td><table bgcolor="#263658" cellspacing="1" cellpadding="0">    <tr>        <td bgcolor="white"><img src="/images/transparent.gif" width="10" height="10"/></td>    </tr></table>        </td>        <td nowrap><font class="SubHeading">Girls U16 2002 Crossover Games</font>        </td>        <td width="99%">&nbsp;</td>    </tr></table></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#ffffff" class="games2"><td bgcolor="#dcdcdc">#8204&nbsp;<br><font class="TinyHeading">MOSL</font></td><td nowrap><div>12:00 PM</div></td><td><a id="Match8204" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4140309&action=Go">BALTIMORE UNION SELECT 02</a></td><td>2</td><td><a id="Match8204" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4138252&action=Go">BALTIMORE BAYS LIGHTNING</a></td><td>0</td><td><a href="fields.aspx?eventid=59881&FieldID=119511">CCBC Essex Field Turf</a></td><td></td></tr><tr bgcolor="#f5f5f5" class="gameS"><td bgcolor="#dcdcdc">#8202&nbsp;<br><font class="TinyHeading">MOSL</font></td><td nowrap><div>1:00 PM</div></td><td><a id="Match8202" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4340356&action=Go">MD RUSH MONTGOMERY '02G DRAGONS</a></td><td>4</td><td><a id="Match8202" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4187353&action=Go">BETHESDA SC DYNAMO 02</a></td><td>0</td><td><a href="fields.aspx?eventid=59881&FieldID=128857">Ridge Road Rec Pk Field 05</a></td><td></td></tr><tr>    <td colspan="8"><font class="PageHeading">11/5/2017</font></td></tr><tr>    <td colspan="8"><table width="100%">    <tr>        <td><table bgcolor="#263658" cellspacing="1" cellpadding="0">    <tr>        <td bgcolor="white"><img src="/images/transparent.gif" width="10" height="10"/></td>    </tr></table>        </td>        <td nowrap><font class="SubHeading">Girls U16 2002 Late Fall Games</font>        </td>        <td width="99%">&nbsp;</td>    </tr></table></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#ffffff" class="games2"><td bgcolor="#dcdcdc">#8821&nbsp;</td><td nowrap><div>12:00 PM</div></td><td><a id="Match8821" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4350478&action=Go">TWIN COUNTY SA SPIRIT 2002</a></td><td>0</td><td><a id="Match8821" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4147419&action=Go">OCEAN UNITED SA HURRICANES</a></td><td>0</td><td><a href="fields.aspx?eventid=59881&FieldID=23758">Drum Point Sports Complex #1</a></td><td></td></tr><tr>    <td colspan="8"><table width="100%">    <tr>        <td><table bgcolor="#263658" cellspacing="1" cellpadding="0">    <tr>        <td bgcolor="white"><img src="/images/transparent.gif" width="10" height="10"/></td>    </tr></table>        </td>        <td nowrap><font class="SubHeading">Girls U16 2002 Crossover Games</font>        </td>        <td width="99%">&nbsp;</td>    </tr></table></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#f5f5f5" class="gameS"><td bgcolor="#dcdcdc">#8847&nbsp;</td><td nowrap><div>5:40 PM</div></td><td><a id="Match8847" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4109984&action=Go">WATCHUNG HILLS NJ ELITE 2002G FUSION</a></td><td></td><td><a id="Match8847" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4146140&action=Go">FC BERNA LEGACY 02G BLACK</a></td><td></td><td><font color="gray"><i>Unassigned</i></font></td><td></td></tr><tr bgcolor="#ffffff" class="games2"><td bgcolor="#dcdcdc">#8207&nbsp;<br><font class="TinyHeading">MOSL</font></td><td nowrap><div>6:00 PM</div></td><td><a id="Match8207" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4187353&action=Go">BETHESDA SC DYNAMO 02</a></td><td>1</td><td><a id="Match8207" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4360356&action=Go">FREEDOM PREMIER 02</a></td><td>1</td><td><a href="fields.aspx?eventid=59881&FieldID=72417">Wootton HS Turf</a></td><td></td></tr><tr>    <td colspan="8"><font class="PageHeading">11/11/2017</font></td></tr><tr>    <td colspan="8"><table width="100%">    <tr>        <td><table bgcolor="#263658" cellspacing="1" cellpadding="0">    <tr>        <td bgcolor="white"><img src="/images/transparent.gif" width="10" height="10"/></td>    </tr></table>        </td>        <td nowrap><font class="SubHeading">Girls U16 2002 Late Fall Games</font>        </td>        <td width="99%">&nbsp;</td>    </tr></table></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#f5f5f5" class="gameS"><td bgcolor="#dcdcdc">#8823&nbsp;</td><td nowrap></td><td><a id="Match8823" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4148427&action=Go">YMS HEAT</a></td><td></td><td><a id="Match8823" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4271124&action=Go">WARRINGTON WHITE WILDCATS</a></td><td></td><td><font color="gray"><i>Unassigned</i></font></td><td></td></tr><tr>    <td colspan="8"><table width="100%">    <tr>        <td><table bgcolor="#263658" cellspacing="1" cellpadding="0">    <tr>        <td bgcolor="white"><img src="/images/transparent.gif" width="10" height="10"/></td>    </tr></table>        </td>        <td nowrap><font class="SubHeading">Girls U16 2002 Crossover Games</font>        </td>        <td width="99%">&nbsp;</td>    </tr></table></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#ffffff" class="games2"><td bgcolor="#dcdcdc">#8848&nbsp;</td><td nowrap><div>1:00 PM</div></td><td><a id="Match8848" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4146267&action=Go">TSF ACADEMY 2001G</a></td><td></td><td><a id="Match8848" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4146140&action=Go">FC BERNA LEGACY 02G BLACK</a></td><td></td><td><font color="gray"><i>Unassigned</i></font></td><td></td></tr><tr>    <td colspan="8"><font class="PageHeading">11/12/2017</font></td></tr><tr>    <td colspan="8"><table width="100%">    <tr>        <td><table bgcolor="#263658" cellspacing="1" cellpadding="0">    <tr>        <td bgcolor="white"><img src="/images/transparent.gif" width="10" height="10"/></td>    </tr></table>        </td>        <td nowrap><font class="SubHeading">Girls U16 2002 Late Fall Games</font>        </td>        <td width="99%">&nbsp;</td>    </tr></table></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#f5f5f5" class="gameS"><td bgcolor="#dcdcdc">#8827&nbsp;</td><td nowrap></td><td><a id="Match8827" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4362711&action=Go">PATRIOT FC RED DRAGONS</a></td><td></td><td><a id="Match8827" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4148427&action=Go">YMS HEAT</a></td><td></td><td><font color="gray"><i>Unassigned</i></font></td><td></td></tr><tr bgcolor="#ffffff" class="games2"><td bgcolor="#dcdcdc">#8819&nbsp;</td><td nowrap><div>9:30 AM</div></td><td><a id="Match8819" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4350478&action=Go">TWIN COUNTY SA SPIRIT 2002</a></td><td>1</td><td><a id="Match8819" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4356285&action=Go">UPPER FREEHOLD/ALLENTOWN SA UFA ELITE</a></td><td>3</td><td><a href="fields.aspx?eventid=59881&FieldID=23758">Drum Point Sports Complex #1</a></td><td></td></tr><tr bgcolor="#f5f5f5" class="gameS"><td bgcolor="#dcdcdc">#8826&nbsp;</td><td nowrap><div>12:30 PM</div></td><td><a id="Match8826" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4148351&action=Go">WESTFIELD SA UNION COUNTY FC PREMIER SPURS</a></td><td>5</td><td><a id="Match8826" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4146148&action=Go">FC BERNA LEGACY 02G GOLD</a></td><td>0</td><td><a href="fields.aspx?eventid=59881&FieldID=57009">Houlihan </a></td><td></td></tr><tr>    <td colspan="8"><font class="PageHeading">11/18/2017</font></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#ffffff" class="games2"><td bgcolor="#dcdcdc">#8830&nbsp;</td><td nowrap></td><td><a id="Match8830" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4215335&action=Go">HARRISON SC EXTREME</a></td><td></td><td><a id="Match8830" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4234914&action=Go">MAPLE SHADE SADS</a></td><td></td><td><font color="gray"><i>Unassigned</i></font></td><td></td></tr><tr>    <td colspan="8"><font class="PageHeading">11/19/2017</font></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#f5f5f5" class="gameS"><td bgcolor="#dcdcdc">#8831&nbsp;</td><td nowrap><div>10:00 AM</div></td><td><a id="Match8831" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4234914&action=Go">MAPLE SHADE SADS</a></td><td>0</td><td><a id="Match8831" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4314448&action=Go">LOWER MERION SC PRIDE</a></td><td>7</td><td><a href="fields.aspx?eventid=59881&FieldID=119822">Maple Shade Turf Field </a></td><td></td></tr><tr>    <td colspan="8"><table width="100%">    <tr>        <td><table bgcolor="#263658" cellspacing="1" cellpadding="0">    <tr>        <td bgcolor="white"><img src="/images/transparent.gif" width="10" height="10"/></td>    </tr></table>        </td>        <td nowrap><font class="SubHeading">Girls U16 2002 Crossover Games</font>        </td>        <td width="99%">&nbsp;</td>    </tr></table></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#ffffff" class="games2"><td bgcolor="#dcdcdc">#8211&nbsp;<br><font class="TinyHeading">MOSL</font></td><td nowrap><div>4:30 PM</div></td><td><a id="Match8211" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4138060&action=Go">BETHESDA SC FREEDOM 02</a></td><td>1</td><td><a id="Match8211" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4138252&action=Go">BALTIMORE BAYS LIGHTNING</a></td><td>1</td><td><a href="fields.aspx?eventid=59881&FieldID=36630">Walter Johnson HS Turf</a></td><td></td></tr><tr>    <td colspan="8"><font class="PageHeading">11/24/2017</font></td></tr><tr>    <td colspan="8"><table width="100%">    <tr>        <td><table bgcolor="#263658" cellspacing="1" cellpadding="0">    <tr>        <td bgcolor="white"><img src="/images/transparent.gif" width="10" height="10"/></td>    </tr></table>        </td>        <td nowrap><font class="SubHeading">Girls U16 2002 Late Fall Games</font>        </td>        <td width="99%">&nbsp;</td>    </tr></table></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#f5f5f5" class="gameS"><td bgcolor="#dcdcdc">#8841&nbsp;</td><td nowrap><div>8:30 PM</div></td><td><a id="Match8841" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4356285&action=Go">UPPER FREEHOLD/ALLENTOWN SA UFA ELITE</a></td><td>2</td><td><a id="Match8841" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4155248&action=Go">FC SPORTIKA ACADEMY 2002G</a></td><td>1</td><td><a href="fields.aspx?eventid=59881&FieldID=124937">Sportika Sports </a></td><td></td></tr><tr>    <td colspan="8"><font class="PageHeading">11/30/2017</font></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#ffffff" class="games2"><td bgcolor="#dcdcdc">#8820&nbsp;<br><font class="TinyHeading">William Wilt Soccer Complex</font></td><td nowrap><div>6:00 PM</div></td><td><a id="Match8820" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4145009&action=Go">MONROE TOWNSHIP YS UNITED 02</a></td><td>1</td><td><a id="Match8820" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4215335&action=Go">HARRISON SC EXTREME</a></td><td>1</td><td><a href="fields.aspx?eventid=59881&FieldID=46724">TBD TBD</a></td><td></td></tr><tr>    <td colspan="8"><font class="PageHeading">12/2/2017</font></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#f5f5f5" class="gameS"><td bgcolor="#dcdcdc">#8824&nbsp;<br><font class="TinyHeading">Alderfer Park</font></td><td nowrap><div>12:00 PM</div><div class="GameTagPostponed">Postponed</div></td><td><a id="Match8824" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4361730&action=Go">HARLEYSVILLE FC RANGERS 03/02</a></td><td>3</td><td><a id="Match8824" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4215335&action=Go">HARRISON SC EXTREME</a></td><td>4</td><td><a href="fields.aspx?eventid=59881&FieldID=24758">Alderfer A1</a></td><td></td></tr><tr bgcolor="#ffffff" class="games2"><td bgcolor="#dcdcdc">#8836&nbsp;</td><td nowrap><div>12:00 PM</div></td><td><a id="Match8836" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4350478&action=Go">TWIN COUNTY SA SPIRIT 2002</a></td><td>2</td><td><a id="Match8836" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4309291&action=Go">PHILADELPHIA UKRAINIAN NATIONALS BLACK VOHON</a></td><td>3</td><td><a href="fields.aspx?eventid=59881&FieldID=23758">Drum Point Sports Complex #1</a></td><td></td></tr><tr bgcolor="#f5f5f5" class="gameS"><td bgcolor="#dcdcdc">#8834&nbsp;</td><td nowrap><div>2:00 PM</div></td><td><a id="Match8834" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4145834&action=Go">DUSC G2002 BLUE</a></td><td></td><td><a id="Match8834" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4148351&action=Go">WESTFIELD SA UNION COUNTY FC PREMIER SPURS</a></td><td></td><td><a href="fields.aspx?eventid=59881&FieldID=17506">Pier 40 Court Yard East </a></td><td></td></tr><tr bgcolor="#ffffff" class="games2"><td bgcolor="#dcdcdc">#8837&nbsp;</td><td nowrap><div>3:00 PM</div></td><td><a id="Match8837" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4362711&action=Go">PATRIOT FC RED DRAGONS</a></td><td></td><td><a id="Match8837" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4359810&action=Go">UKRAINIAN NATIONALS 2002 GIRLS RED</a></td><td></td><td><a href="fields.aspx?eventid=59881&FieldID=85565">Veterans Park (11v11) </a></td><td></td></tr><tr>    <td colspan="8"><table width="100%">    <tr>        <td><table bgcolor="#263658" cellspacing="1" cellpadding="0">    <tr>        <td bgcolor="white"><img src="/images/transparent.gif" width="10" height="10"/></td>    </tr></table>        </td>        <td nowrap><font class="SubHeading">Girls U16 2002 Crossover Games</font>        </td>        <td width="99%">&nbsp;</td>    </tr></table></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#f5f5f5" class="gameS"><td bgcolor="#dcdcdc">#8209&nbsp;<br><font class="TinyHeading">MOSL</font></td><td nowrap><div>11:00 AM</div></td><td><a id="Match8209" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4134717&action=Go">A3 SEAHAWKS</a></td><td>0</td><td><a id="Match8209" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4140309&action=Go">BALTIMORE UNION SELECT 02</a></td><td>6</td><td><a href="fields.aspx?eventid=59881&FieldID=108967">Bell Branch Park C</a></td><td></td></tr><tr>    <td colspan="8"><font class="PageHeading">12/3/2017</font></td></tr><tr>    <td colspan="8"><table width="100%">    <tr>        <td><table bgcolor="#263658" cellspacing="1" cellpadding="0">    <tr>        <td bgcolor="white"><img src="/images/transparent.gif" width="10" height="10"/></td>    </tr></table>        </td>        <td nowrap><font class="SubHeading">Girls U16 2002 Late Fall Games</font>        </td>        <td width="99%">&nbsp;</td>    </tr></table></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#ffffff" class="games2"><td bgcolor="#dcdcdc">#8833&nbsp;</td><td nowrap><div>12:00 PM</div></td><td><a id="Match8833" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4148351&action=Go">WESTFIELD SA UNION COUNTY FC PREMIER SPURS</a></td><td>3</td><td><a id="Match8833" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4350478&action=Go">TWIN COUNTY SA SPIRIT 2002</a></td><td>0</td><td><a href="fields.aspx?eventid=59881&FieldID=57009">Houlihan </a></td><td></td></tr><tr>    <td colspan="8"><font class="PageHeading">12/9/2017</font></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#f5f5f5" class="gameS"><td bgcolor="#dcdcdc">#8842&nbsp;</td><td nowrap><div>12:00 PM</div></td><td><a id="Match8842" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4215335&action=Go">HARRISON SC EXTREME</a></td><td></td><td><a id="Match8842" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4314448&action=Go">LOWER MERION SC PRIDE</a></td><td></td><td><a href="fields.aspx?eventid=59881&FieldID=57419">William Wilt Soccer Complex </a></td><td></td></tr><tr bgcolor="#ffffff" class="games2"><td bgcolor="#dcdcdc">#8822&nbsp;</td><td nowrap><div>2:00 PM</div><div class="GameTagPostponed">Postponed</div></td><td><a id="Match8822" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4362711&action=Go">PATRIOT FC RED DRAGONS</a></td><td></td><td><a id="Match8822" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4356285&action=Go">UPPER FREEHOLD/ALLENTOWN SA UFA ELITE</a></td><td></td><td><a href="fields.aspx?eventid=59881&FieldID=85565">Veterans Park (11v11) </a></td><td></td></tr><tr>    <td colspan="8"><table width="100%">    <tr>        <td><table bgcolor="#263658" cellspacing="1" cellpadding="0">    <tr>        <td bgcolor="white"><img src="/images/transparent.gif" width="10" height="10"/></td>    </tr></table>        </td>        <td nowrap><font class="SubHeading">Girls U16 2002 Crossover Games</font>        </td>        <td width="99%">&nbsp;</td>    </tr></table></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#f5f5f5" class="gameS"><td bgcolor="#dcdcdc">#8210&nbsp;<br><font class="TinyHeading">MOSL</font></td><td nowrap><div>11:00 AM</div></td><td><a id="Match8210" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4134717&action=Go">A3 SEAHAWKS</a></td><td>1</td><td><a id="Match8210" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4340235&action=Go">MD RUSH MONTGOMERY BLUE '02G</a></td><td>4</td><td><a href="fields.aspx?eventid=59881&FieldID=109365">Bell Branch Park A</a></td><td></td></tr><tr>    <td colspan="8"><font class="PageHeading">12/10/2017</font></td></tr><tr>    <td colspan="8"><table width="100%">    <tr>        <td><table bgcolor="#263658" cellspacing="1" cellpadding="0">    <tr>        <td bgcolor="white"><img src="/images/transparent.gif" width="10" height="10"/></td>    </tr></table>        </td>        <td nowrap><font class="SubHeading">Girls U16 2002 Late Fall Games</font>        </td>        <td width="99%">&nbsp;</td>    </tr></table></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#ffffff" class="games2"><td bgcolor="#dcdcdc">#8828&nbsp;<br><font class="TinyHeading">LMSC PRIDE @ PROVING GROUNDS</font></td><td nowrap><div>11:00 AM</div></td><td><a id="Match8828" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4314448&action=Go">LOWER MERION SC PRIDE</a></td><td></td><td><a id="Match8828" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4361730&action=Go">HARLEYSVILLE FC RANGERS 03/02</a></td><td></td><td><a href="fields.aspx?eventid=59881&FieldID=136148">Proving Grounds Field #2</a></td><td></td></tr><tr bgcolor="#f5f5f5" class="gameS"><td bgcolor="#dcdcdc">#8843&nbsp;</td><td nowrap><div>1:00 PM</div></td><td><a id="Match8843" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4147419&action=Go">OCEAN UNITED SA HURRICANES</a></td><td></td><td><a id="Match8843" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4356285&action=Go">UPPER FREEHOLD/ALLENTOWN SA UFA ELITE</a></td><td></td><td><a href="fields.aspx?eventid=59881&FieldID=13226">Ocean Twp - HS Turf</a></td><td></td></tr><tr>    <td colspan="8"><font class="PageHeading">12/16/2017</font></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#ffffff" class="games2"><td bgcolor="#dcdcdc">#8845&nbsp;<br><font class="TinyHeading">LMSC PRIDE @ PROVING GROUNDS</font></td><td nowrap><div>11:00 AM</div></td><td><a id="Match8845" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4314448&action=Go">LOWER MERION SC PRIDE</a></td><td>5</td><td><a id="Match8845" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4359810&action=Go">UKRAINIAN NATIONALS 2002 GIRLS RED</a></td><td>1</td><td><a href="fields.aspx?eventid=59881&FieldID=136148">Proving Grounds Field #2</a></td><td></td></tr><tr bgcolor="#f5f5f5" class="gameS"><td bgcolor="#dcdcdc">#8829&nbsp;</td><td nowrap><div>12:00 PM</div></td><td><a id="Match8829" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4271124&action=Go">WARRINGTON WHITE WILDCATS</a></td><td></td><td><a id="Match8829" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4362711&action=Go">PATRIOT FC RED DRAGONS</a></td><td></td><td><a href="fields.aspx?eventid=59881&FieldID=40187">King II #2 Lower</a></td><td></td></tr><tr>    <td colspan="8"><table width="100%">    <tr>        <td><table bgcolor="#263658" cellspacing="1" cellpadding="0">    <tr>        <td bgcolor="white"><img src="/images/transparent.gif" width="10" height="10"/></td>    </tr></table>        </td>        <td nowrap><font class="SubHeading">Girls U16 2002 Crossover Games</font>        </td>        <td width="99%">&nbsp;</td>    </tr></table></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#ffffff" class="games2"><td bgcolor="#dcdcdc">#8206&nbsp;<br><font class="TinyHeading">MOSL</font></td><td nowrap><div>2:30 PM</div></td><td><a id="Match8206" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4340235&action=Go">MD RUSH MONTGOMERY BLUE '02G</a></td><td>2</td><td><a id="Match8206" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4138060&action=Go">BETHESDA SC FREEDOM 02</a></td><td>8</td><td><a href="fields.aspx?eventid=59881&FieldID=90812">MLK Stadium Field #1</a></td><td></td></tr><tr bgcolor="#f5f5f5" class="gameS"><td bgcolor="#dcdcdc">#8213&nbsp;<br><font class="TinyHeading">MOSL</font></td><td nowrap><div>3:00 PM</div></td><td><a id="Match8213" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4360356&action=Go">FREEDOM PREMIER 02</a></td><td>0</td><td><a id="Match8213" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4340356&action=Go">MD RUSH MONTGOMERY '02G DRAGONS</a></td><td>2</td><td><a href="fields.aspx?eventid=59881&FieldID=108578">Marriotts Ridge HS </a></td><td></td></tr><tr>    <td colspan="8"><font class="PageHeading">12/17/2017</font></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#ffffff" class="games2"><td bgcolor="#dcdcdc">#8201&nbsp;<br><font class="TinyHeading">MOSL</font></td><td nowrap><div>10:30 AM</div></td><td><a id="Match8201" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4360356&action=Go">FREEDOM PREMIER 02</a></td><td>2</td><td><a id="Match8201" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4340235&action=Go">MD RUSH MONTGOMERY BLUE '02G</a></td><td>2</td><td><a href="fields.aspx?eventid=59881&FieldID=108578">Marriotts Ridge HS </a></td><td></td></tr><tr bgcolor="#f5f5f5" class="gameS"><td bgcolor="#dcdcdc">#8205&nbsp;<br><font class="TinyHeading">MOSL</font></td><td nowrap><div>11:00 AM</div></td><td><a id="Match8205" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4138060&action=Go">BETHESDA SC FREEDOM 02</a></td><td>8</td><td><a id="Match8205" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4134717&action=Go">A3 SEAHAWKS</a></td><td>0</td><td><a href="fields.aspx?eventid=59881&FieldID=72417">Wootton HS Turf</a></td><td></td></tr><tr>    <td colspan="8"><font class="PageHeading">1/27/2018</font></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#ffffff" class="games2"><td bgcolor="#dcdcdc">#8526&nbsp;<br><font class="TinyHeading">MOSL</font></td><td nowrap><div>1:00 PM</div></td><td><a id="Match8526" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4462223&action=Go">BETHESDA SC ECNL FORCE 04</a></td><td>2</td><td><a id="Match8526" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4135613&action=Go">BETHESDA SC SAVAGE 04</a></td><td>0</td><td><a href="fields.aspx?eventid=59881&FieldID=36630">Walter Johnson HS Turf</a></td><td></td></tr><tr>    <td colspan="8"><font class="PageHeading">1/28/2018</font></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#f5f5f5" class="gameS"><td bgcolor="#dcdcdc">#8212&nbsp;<br><font class="TinyHeading">MOSL</font></td><td nowrap><div>10:00 AM</div><div class="GameTagRescheduled">Rescheduled</div></td><td><a id="Match8212" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4187353&action=Go">BETHESDA SC DYNAMO 02</a></td><td>0</td><td><a id="Match8212" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4140309&action=Go">BALTIMORE UNION SELECT 02</a></td><td>3</td><td><a href="fields.aspx?eventid=59881&FieldID=36630">Walter Johnson HS Turf</a></td><td></td></tr><tr>    <td colspan="8"><font class="PageHeading">2/3/2018</font></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#ffffff" class="games2"><td bgcolor="#dcdcdc">#8527&nbsp;<br><font class="TinyHeading">MOSL</font></td><td nowrap><div>1:00 PM</div></td><td><a id="Match8527" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4462223&action=Go">BETHESDA SC ECNL FORCE 04</a></td><td></td><td><a id="Match8527" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4139728&action=Go">BETHESDA SC LEGACY 03</a></td><td></td><td><a href="fields.aspx?eventid=59881&FieldID=72417">Wootton HS Turf</a></td><td></td></tr><tr>    <td colspan="8"><font class="PageHeading">2/11/2018</font></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#f5f5f5" class="gameS"><td bgcolor="#dcdcdc">#8528&nbsp;<br><font class="TinyHeading">MOSL</font></td><td nowrap><div>1:00 PM</div></td><td><a id="Match8528" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4462223&action=Go">BETHESDA SC ECNL FORCE 04</a></td><td></td><td><a id="Match8528" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4138060&action=Go">BETHESDA SC FREEDOM 02</a></td><td></td><td><a href="fields.aspx?eventid=59881&FieldID=36630">Walter Johnson HS Turf</a></td><td></td></tr><tr>    <td colspan="8"><font class="PageHeading">4/1/2018</font></td></tr><tr>    <td colspan="8"><table width="100%">    <tr>        <td><table bgcolor="#263658" cellspacing="1" cellpadding="0">    <tr>        <td bgcolor="white"><img src="/images/transparent.gif" width="10" height="10"/></td>    </tr></table>        </td>        <td nowrap><font class="SubHeading">Girls U16 2002 Late Fall Games</font>        </td>        <td width="99%">&nbsp;</td>    </tr></table></td></tr><tr class="HeadingC">    <td>Game</td>    <td>Time</td>    <td>Home Team</td>    <td></td>    <td>Away Team</td>    <td></td>    <td>Location</td>    <td align="right" valign="top"  style="padding:0;"><img src="/images/ui/cornerCHOPtop.gif"></td></tr><tr bgcolor="#ffffff" class="games2"><td bgcolor="#dcdcdc">#8844&nbsp;</td><td nowrap><div onclick="location.href='/events/ical.aspx?E=59881&G=8844';">&nbsp;<img src="/images/icons/ical.png">&nbsp;9:00 AM</div></td><td><a id="Match8844" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4234914&action=Go">MAPLE SHADE SADS</a></td><td></td><td><a id="Match8844" href="/events/schedule.aspx?eventid=59881&FieldID=0&applicationID=4145009&action=Go">MONROE TOWNSHIP YS UNITED 02</a></td><td></td><td><a href="fields.aspx?eventid=59881&FieldID=119822">Maple Shade Turf Field </a></td><td></td></tr></table>
+        <br />
+        <br />
+        <div align="center">
+        <span id="ctl00_MainBody_TimeStamp" class="TinyText" style="color:Gray;">2/14/2018 11:33:44 AM</span>
+        
+        </div>
+        </td>
+    </tr>
+</table>
+
+
+						</td>
+					</tr>
+				</table>
+		
+				</td>
+			</tr>
+		</table>
+		
+		</div>
+		
+		<div align="right" style="padding-right:20px;"><a href="http://www.gotsoccer.com/" target="_blank"><img src="/images/logos/gotsoccer_powered_by_2017_small2_wh2.png"></a></div>
+		
+	</div>
+            
+    
+    <br />
+    <br />
+    <br />
+    
+    </form>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20472997-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<!-- Begin comScore Tag -->
+<script>
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "9563615" });
+  (function() {
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+    el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  <img src="http://b.scorecardresearch.com/p?c1=2&c2=9563615&cv=2.0&cj=1" />
+</noscript>
+<!-- End comScore Tag -->
+
+    
+</body>
+
+
+</html>

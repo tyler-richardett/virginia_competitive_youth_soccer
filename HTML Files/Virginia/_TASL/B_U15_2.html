@@ -1,0 +1,789 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en" "http://www.w3.org/TR/REC-html40/strict.dtd">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script language="JavaScript">
+	var deleteConfirmed = true;
+
+	function confirmDelete() {
+	  deleteConfirmed = confirm("Are you sure you want to remove this team from this division?");
+	}
+
+	function validate() {
+	  var validated = deleteConfirmed;
+
+	  deleteConfirmed = true;
+	  return validated;
+	}
+
+	var rescheduleConfirmed = true;
+	function confirmReschedule() {
+		rescheduleConfirmed = confirm("This will delete all games on selected dates, whether they are Unpublished or Published, notifying " + 
+			"the referee coordinator, the field coordinator, the teams, any scheduled referees, " + 
+			"and any affiliated organizations." + 
+			"\nPress OK if that is what you want done, otherwise press CANCEL.");
+	}
+
+	function validateReschedule() {
+	  var rescheduleValidated = rescheduleConfirmed;
+
+	  rescheduleConfirmed = true;
+	  return rescheduleValidated;
+	}
+</script>
+<!-- Test for current session and set YSLkey, currentUserRole, currentUser and entity -->
+<!--  All jsp pages except yslIndex.jsp and ViewLeagueChoose.jsp need to include this file.
+      It tests for loss of session and redirects to the login page if lost.
+      If there is no loss of session, it sets currentUser and currentUserRole
+      and entity.
+-->
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="Author" content="Steve Willett">
+<title>View Division</title>
+<link href="YSLstyle.css" rel="stylesheet" type="text/css">
+</head>
+
+<BODY topmargin="0" marginheight="0"  leftmargin='20' rightmargin='20' bgcolor="#193E79" gridx="16" gridy="16" showgridx="showgridx" showgridy="showgridy">
+	
+<table width="93%" border="0" bgcolor="FFFFFF" align="center" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<table border=0 align="center" cellspacing=0 cellpadding=0 width="98%"> 
+				<tr>
+					<td valign='top' width='160'>
+						<img src="/images/PoweredBy2lns.png" width="160" height="35" border="0">
+					</td>
+					<td align="center">
+						<img src="/images/MySoccerLeagueBanner.png" width="417" height="60" border="0">
+					</td>
+					<td width='160' align="center">&nbsp;</td>
+				</tr>
+			</table>
+ 
+
+
+
+	<br>
+	<!-- Subheader: League, Page Description, and Links -->
+	<table class='subborder' width="100%" border="0" align="center" cellpadding="4" cellspacing="0">
+	<!-- Season and Competition and Division -->
+		<tr>
+			<td align="center" width='35%' class="subheading">
+				TASL TASL Fall 2017 League Play<br>  
+				U15 Boys B Division Division
+			</td>
+	<!-- Links - Common -->
+			<td class="textlinks" valign='middle'>
+				&nbsp;<a href="UserHome.jsp?YSLkey=LGSXLGLCKRGGGGGGGHKKSCHHLK">User Home</a>&nbsp;&nbsp;| 
+				&nbsp;<a href="/ViewLeague.jsp?YSLkey=LGSXLGLCKRGGGGGGGHKKSCHHLK&leagueId=371">View League</a>&nbsp;&nbsp;|
+
+
+		&nbsp;<a href="yslIndex.jsp?YSLkey=LGSXLGLCKRGGGGGGGHKKSCHHLK&actionName=Log%20Out"><strong>Log In</strong></a>&nbsp;&nbsp;|
+
+<!-- JBLOGIC: If ViewStandings is ON and showStandings is true then include Teams link -->
+
+
+<!-- JBLOGIC: if ViewTeams is ON or ViewStandings is ON and showStandings is true then include Schedule link -->
+
+
+
+
+			&nbsp;<a href="Help.jsp?YSLkey=LGSXLGLCKRGGGGGGGHKKSCHHLK&siteTitle=MySoccerLeague.com" target='help'>User&nbsp;Help</a> 
+
+			</td> 
+		</tr>
+	</table>
+	<br>
+	<!-- League Name -->
+	<table width="500" border="0" align="center" cellpadding="0" cellspacing="0">
+		<tr>
+			<td class="heading">Tidewater Area Soccer League</td>
+		</tr>
+	</table>
+<!-- If there is are alert, status, warning or error messages, show them here -->
+
+
+
+
+
+	<br>
+
+	<form action="/HideCoachConflictServlet" id="coachConflictForm" method="post">
+		<input type="hidden" name="divDbId" value="20044">
+		<input type="hidden" name="YSLkey" value="LGSXLGLCKRGGGGGGGHKKSCHHLK">
+		<input type="hidden" id="gameId" name="gameId" value="0">
+		<input type="hidden" id="coachId" name="coachId" value="0">
+		<input type="hidden" id="hideComp" name="hideComp" value="">
+		<input type="hidden" id="hideCoach" name="hideCoach" value="">
+	</form>
+	
+
+	
+	<form action="/ViewDivisionServlet" method="post" onSubmit="return validate()">
+	<input type="hidden" name="divDbId" value="20044">
+	<input type="hidden" name="YSLkey" value="LGSXLGLCKRGGGGGGGHKKSCHHLK">
+	<input type="hidden" name="gameId" value="">
+	<input type="hidden" name="coachId" value="">
+	<input type="hidden" name="hideComp" value="">
+	<input type="hidden" name="hideCoach" value="">
+
+	<!-- Standings Header with Show-Hide Button  -->
+	<!-- JB LOGIC Submit button is either SHOW or HIDE  -->
+	<table class='subborder' width="100%" border="0" align="center" cellpadding="4" cellspacing="0">
+		<tr height='28'>
+			<td class="textlinks" valign='middle' width='20%' style="font-size:13px;">&nbsp;&nbsp;<input type="submit" name="toggleViewStandings" value="Show"> Standings </td>
+
+
+		</tr>
+	</table>
+
+
+	   
+	 <br>
+
+	
+	<!-- Teams Header with Show-Hide Button  -->
+	<!-- JB LOGIC Submit button is either SHOW or HIDE  -->
+		<a name="Teams">
+		<table class='subborder' width="100%" border="0" align="center" cellpadding="4" cellspacing="0">
+			<tr height='28'>
+				<td class="textlinks" valign='middle' width='20%' style="font-size:13px;">&nbsp;&nbsp;<input type="submit" name="toggleViewTeams" value="Show"> Teams 
+	<!-- JB LOGIC If Teams is ON, then display message in header  -->
+</td>
+</tr></table>
+
+	
+	</form>
+	  <!-- SCHEDULE -->
+
+	  <a name="Schedule">
+	  <table align='center' border=0 cellpadding="1" cellspacing="0" >
+
+		  <table class='subborder' width="100%" border="0" align="center" cellpadding="4" cellspacing="0">
+			<tr height='28'>
+				<td class="textlinks" valign='middle' width='20%' style="font-size:13px;">&nbsp;&nbsp;Schedule </td>
+				<td class="textlinks">Home teams are listed first<br>* marks tentative results</td>
+				<td class="textlinks" valign='middle'><a href="ViewDivisionPRNT.jsp?divDbId=20044&YSLkey=LGSXLGLCKRGGGGGGGHKKSCHHLK" target="PDF">Printable Schedule</a> &nbsp; 
+	                 <a href="/Help.jsp?YSLkey=LGSXLGLCKRGGGGGGGHKKSCHHLK&siteTitleTitle=MySoccerLeague.com&subject=WhatsThisPrintSchedule" target='help'><img src="/images/QuestionMark.gif"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				
+<a href="data/schedguest.txt" target="data">Export Schedule</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+					     
+		  </td></tr>
+		</table>
+		
+<!-- SHOW THE GAMES IN THIS DIVISION, INCLUDING RESULTS -->
+<!-- Requirements for the pages including this code -
+   The following must have already been defined:
+   (1) Collection games;
+   (2) UserRole currentUserRole;
+   (3) String YSLkey
+   (4) Division div
+   (5) int returnCode; // Where to return after editing game.
+                       // 1 == "/ViewDivision.jsp?divDbId=x"
+                       // 2 == "/CreateSchedule.jsp"
+                       // 5 == "/CreateTourSched.jsp"
+                       // 0 == Don't show "Edit Game" links
+   (6) boolean allGamesPublished = true;
+   (7) boolean selecting - if you want selection boxes next to the dates
+   (8) String compId - if not null, include as parameter in Edit Game links
+   (9) OutputStreamWriter scheduleDataFile if not null, write games to file.
+	
+   Note: after this fragment is complete, a boolean called 'allGamesPublished' will be set.  It will be true if all the games in this division are already published.
+-->
+
+
+
+
+
+<table border=0 cellpadding="4" cellspacing="0" align='center'>
+	<tr>
+		<td class="italics">
+			Home teams are listed first<br>
+			* marks tentative results
+		</td>
+	</tr>
+
+	
+<!-- ************ VENUE DIRECTIONS ************* -->
+<!-- USED on FOLLOWING PAGES:
+	ShowGamesFragment.jsp
+	ViewRefAssignments.jsp
+	GamesReffedReport.jsp
+	GamesReffedReportRC.jsp
+	CurrentRefAssignments.jsp
+	ViewGameofficialGrades.jsp
+	
+
+
+-->
+
+<script type='text/javascript' language="JavaScript">
+ 	
+function directWindow(fieldName, directions, comments)
+  {
+  var hx=770;
+  dirWindow = window.open("", "dirWin", "resizable=yes,scrollbars=yes,innerWidth=600,width=600,innerHeight=770,height=770")
+  dirWindow.document.writeln("<HTML><HEAD><TITLE>Directions to " +
+     fieldName + "</TITLE></HEAD><BODY BGCOLOR=#193E79>")
+  dirWindow.document.writeln("<table width='550' border='1' align='center' cellspacing='0' cellpadding='0'>")
+  dirWindow.document.writeln("<tr><td><table width='550' align='center' border='0' cellspacing='0' cellpadding='4' style='background-color:#F3DC71; font-family:arial;'>")
+  dirWindow.document.writeln("<tr style='background-color:#99AAC0; font-size:16px; height:30px; font-weight:bold;'><td>&nbsp;"+ fieldName + "</td></tr>")
+  dirWindow.document.writeln("<tr style='font-weight:bold; font-size:14px; height:26px'><td>&nbsp;Directions:</td></tr>")
+
+  dirWindow.document.writeln("<tr style='font-weight:normal; font-size:12px; background-color:#FBF5C6;'><td>" + directions + "</td></tr>")
+
+  dirWindow.document.writeln("<tr style='font-weight:bold; font-size:14px; height:26px'><td>&nbsp;Comments:</td></tr>")
+ 
+  dirWindow.document.writeln("<tr style='font-weight:normal; font-size:12px; background-color:#FBF5C6;'><td>" + comments + "</td></tr>")
+  dirWindow.document.writeln("<tr style='font-weight:normal; font-size:12px; height:20px; background-color:#FBF5C6;'><td>&nbsp;</td></tr>")
+  dirWindow.document.writeln("</table></td></tr></table>")
+  dirWindow.document.close()
+  dirWindow.focus()
+}
+</script>
+
+
+<!-- ************ COACH CONFLICT ************* -->
+<!-- USED on FOLLOWING PAGES:
+	ShowGamesFragment.jsp
+	ShowGamesFragmentNoTeams.jsp
+	SwapGames.jsp
+	ViewVenueUsage.jsp
+	ViewTeam.jsp
+
+	if this fragment is used be sure to set the return URL, which is used by HideCoachConflictServlet, for example:
+	YslSession.setHideCoachConflictReturnURL(session, request.getServletPath() + "?" + request.getQueryString());
+
+-->
+
+
+<script type='text/javascript' language="JavaScript">
+
+var confWindow; 
+
+confWindow = window.open("", "confWin");
+confWindow.close();
+
+/*
+function submitParentForm(type, idStr) {
+	if (type == 'coach') {
+		confWindow.opener.document.getElementById('hideCoach').value = 'true';
+		confWindow.opener.coachConflictForm.document.getElementById('coachId').value = idStr;
+	} else if (type == 'comp') {
+		confWindow.opener.coachConflictForm.document.getElementById('hideComp').value = 'true';
+		confWindow.opener.coachConflictForm.document.getElementById('gameId').value = idStr;
+	}
+	confWindow.opener.getElementById('coachConflictForm').submit();
+	confWindow.close();
+}
+*/    
+// this method only called for unsaved games
+function coachConflictInfoWindow(conflictTypeStr, gameIdStr, coachIdStr, conflictStr, returnJsp, canHide) {
+	if (!confWindow.closed) { 
+		confWindow.close();
+	} 
+	confWindow = window.open("", "confWin", "resizable=yes,innerWidth=380,width=380,innerHeight=340,height=340");
+	confWindow.document.writeln("<HTML><HEAD><TITLE>" + conflictTypeStr + " Conflict for game " +
+      gameIdStr + "</TITLE></HEAD>\n<BODY><CENTER>")
+
+	confWindow.document.writeln("<table width='300' border='2' align='center' cellspacing='0' cellpadding='0'>")
+	confWindow.document.writeln("<tr><td><table width='300' align='center' border='0' cellspacing='0' cellpadding='4' style='background-color:#D65C3C; font-family:arial;'>")
+	confWindow.document.writeln("<tr style='font-weight:bold; font-size:14px; height:26px'><td>&nbsp;" + conflictTypeStr + " Conflict</td></tr>")
+	confWindow.document.writeln("<tr style='background-color:#F4E2D0; font-family:arial; font-size:12px; line-height:140%;'>\n<td>WITH GAME:<br>" + conflictStr + "</td></tr>")
+	confWindow.document.writeln("<tr style='font-weight:bold; font-size:14px; height:26px'><td align='center'>");
+/*	confWindow.document.writeln("The conflicted game is unsaved<br><br>"); */
+	
+	confWindow.document.writeln("<input type='submit' value='Close Window' onclick='self.close()'>");
+	confWindow.document.writeln("</td></tr>");
+	confWindow.document.writeln("</table></td></tr></table>");
+
+	confWindow.document.writeln("</CENTER></BODY></HTML>");
+	confWindow.document.close();
+}
+
+function coachConflictWindow(conflictTypeStr, gameIdStr, coachIdStr, conflictStr, returnJsp,canHide) {
+	if (!confWindow.closed) { 
+		confWindow.close();
+	} 
+	confWindow = window.open("", "confWin", "resizable=yes,innerWidth=380,width=380,innerHeight=380,height=380");
+	confWindow.document.writeln("<HTML><HEAD><TITLE>" + conflictTypeStr + " Conflict for game " +
+      gameIdStr + "</TITLE></HEAD>\n<BODY><CENTER>")
+
+	confWindow.document.writeln("<table width='300' border='2' align='center' cellspacing='0' cellpadding='0'>")
+	confWindow.document.writeln("<tr><td><table width='300' align='center' border='0' cellspacing='0' cellpadding='4' style='background-color:#D65C3C; font-family:arial;'>")
+	confWindow.document.writeln("<tr style='font-weight:bold; font-size:14px; height:26px'><td>&nbsp;" + conflictTypeStr + " Conflict</td></tr>")
+	confWindow.document.writeln("<tr style='background-color:#F4E2D0; font-family:arial; font-size:12px; line-height:140%;'>\n<td>WITH GAME:<br>" + conflictStr + "</td></tr>")
+	confWindow.document.writeln("<tr style='font-weight:bold; font-size:14px; height:26px'><td align='center'>");
+	if (canHide) {
+		confWindow.document.writeln("Hide all coach conflicts for this<br><br>");
+		confWindow.document.write("<input type='submit' value='Coach' onclick=\"parent.window.opener.location.href='" + returnJsp + "&hideCoach=true&coachId=" + coachIdStr + "';window.close()\">\n");
+		confWindow.document.write("&nbsp;&nbsp;<input type='submit' value='Competition' onclick=\"parent.window.opener.location.href='" + returnJsp + "&hideComp=true&gameId=" + gameIdStr + "';window.close()\"><br><br>\n");
+	}
+/*
+	confWindow.document.writeln("<i>(You may need to refresh your browser to see the effect of hiding conflicts)</i><br>");
+*/
+	confWindow.document.writeln("<input type='submit' value='Close Window' onclick='self.close()'>");
+	confWindow.document.writeln("</td></tr>");
+	confWindow.document.writeln("</table></td></tr></table>");
+
+	confWindow.document.writeln("</CENTER></BODY></HTML>");
+	confWindow.document.close();
+}
+
+</script>
+
+
+	
+<tr class="tblSubheading">
+<td class="tblSubheading" colspan="100%" style="height:24px; text-indent:5px;">
+<b>Sat Sep 9, 2017</b>
+</td>
+</tr>
+<tr class="trstyle1">
+<td class="trstyleGame" bgcolor="#FFFFFF">TSA Rovers FC&nbsp;&nbsp;0,&nbsp;&nbsp;&nbsp;&nbsp;CUSC Sharks&nbsp;&nbsp;2&nbsp;&nbsp;</td>
+<td>12:00 PM</td>
+<td><a href="javascript:directWindow('Warhill Soccer Complex 6','No directions available','No comments')">WAR 6</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle2">
+<td class="trstyleGame">Beach FC Arsenal&nbsp;&nbsp;1,&nbsp;&nbsp;&nbsp;&nbsp;Carolina Explosions&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;*</td>
+<td>1:15 PM</td>
+<td><a href="javascript:directWindow('Hampton Roads Soccer Complex Field 15','No directions available','No comments')">HRSC 15</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle1">
+<td class="trstyleGame" bgcolor="#FFFFFF">Beach FC Panthers&nbsp;&nbsp;0,&nbsp;&nbsp;&nbsp;&nbsp;WBSC Sizzlers&nbsp;&nbsp;3&nbsp;&nbsp;</td>
+<td>2:00 PM</td>
+<td><a href="javascript:directWindow('Hampton Roads Soccer Complex Field 14','No directions available','No comments')">HRSC 14</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle2">
+<td class="trstyleGame">Smithfield Hotshots&nbsp;&nbsp;6,&nbsp;&nbsp;&nbsp;&nbsp;CSC Griffins&nbsp;&nbsp;3&nbsp;&nbsp;</td>
+<td>4:00 PM</td>
+<td><a href="javascript:directWindow('Carrollton Nike Park 3','Carrollton Nike Park, 13036 Nike Park Road, Carrollton, Va 23314: 
+
+
+From Southside (Norfolk, VA Beach) 
+Travel via I-64 West to Hampton; take the second Mercury Blvd Exit - Route 258, this will put you on Mercury Blvd heading towards, Newport News/James River Bridge/Isle of Wight County/Carrollton. Travel approximately 4 miles to the James River Bridge, continue over the bridge. The road changes names to Route 17 South. Continue on Route 17 and turn right onto Smith\'s Neck Road (SR-669) Eagle Harbor Shopping Center will be on the right. Approximately �� mile turn left on Reynolds Drive (SR-669/665). Take a right onto Nike Park Road (SR-669). Travel approximately 2 miles park is on the left. 
+From Williamsburg: Travel via I-64 East to Hampton 
+Take the first Mercury Blvd Exit - Route 258, this will put you on Mercury Blvd heading towards, Newport News/James River Bridge/Isle of Wight County/Carrollton. Travel approximately 4 miles to the James River Bridge, continue over the bridge. The road changes names to Route 17 South. Continue on Route 17 and turn right onto Smith\'s Neck Road (SR-669) Eagle Harbor Shopping Center will be on the right. Approximately �� mile turn left on Reynolds Drive left (SR-669/665). Take a right onto Nike Park Road (SR-669). Travel approximately 2 miles park is on the left. 
+From Chesapeake: Travel via I-664 to the Portsmouth/Newport News/James River Bridge Interchange 
+Take the Newport News/ James River Bridge Exit. (This will put you on the merge for Route 17 North) Travel on Route 17 North for approximately 10 miles. Take a left at Smith\'s Neck Road (SR-669) Eagle Harbor Shopping Center will be on the left. Approximately �� mile turn left on Reynolds Drive (SR-669/665). Take a right onto Nike Park Road (SR-669). Travel approximately 2 miles park is on the left. ','No comments')">NIKE 3</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr><td>&nbsp;</td></tr><tr class="tblSubheading">
+<td class="tblSubheading" colspan="100%" style="height:24px; text-indent:5px;">
+<b>Sat Sep 16, 2017</b>
+</td>
+</tr>
+<tr class="trstyle1">
+<td class="trstyleGame" bgcolor="#FFFFFF">CSC Griffins&nbsp;&nbsp;4,&nbsp;&nbsp;&nbsp;&nbsp;CUSC Sharks&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;*</td>
+<td>9:00 AM</td>
+<td><a href="javascript:directWindow('Centerville Complex Field 6','<br><B>Address for Centerville Soccer Complex:</b><br><br>
+
+1857 Centerville Turnpike, Chesapeake, VA 23322<br><br>
+
+<br><B>Directions from I-64 East or West:</b><br><br>
+ 
+Exit 291B, Highway 168 to Nag\'s Head/ Great Bridge. Take left fork for hwy 168 towards Nag\'s Head.  After approximately 5 miles, exit at 10B, Hanbury Rd East.  Hanbury will become Etheridge Manor Blvd.  Continue straight on this road until it ends at Centerville Turnpike.  Turn right onto Centerville Turnpike and go approximately 1.7 miles.  The entrance to the complex is on the left, just before the railroad tracks.<br><br> 
+
+<br><B>Directions from Greenbrier Parkway:</b><br><br>
+ 
+Traveling west/south on Greenbrier Parkway, cross Volvo Parkway and Kempsville Road.  At this point, the road becomes Butts Station Road.  Continue on Butts Station until it ends at Centerville Turnpike, approximately 2.2 miles.  Turn right, and follow Centerville Turnpike for approximately 5.2 miles.  The entrance to the complex is on the left, just before the railroad tracks.  ','Centervile Complex fields 6, 7 and 8 
+
+Weather Hotline: (757) 644-4529')">CC 6</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle2">
+<td class="trstyleGame">WBSC Sizzlers&nbsp;&nbsp;3,&nbsp;&nbsp;&nbsp;&nbsp;Beach FC Norfolk United&nbsp;&nbsp;1&nbsp;&nbsp;</td>
+<td>9:00 AM</td>
+<td><a href="javascript:directWindow('Joliff Middle School Field 1','1021 Jolliff Rd
+Chesapeake, VA 23321
+
+[Plug this into your favorite GPS/Mapping app]','The field will be located towards the back of the school')">JMS 1</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle1">
+<td class="trstyleGame" bgcolor="#FFFFFF">Beach FC Panthers&nbsp;&nbsp;4,&nbsp;&nbsp;&nbsp;&nbsp;CUSC Sharks&nbsp;&nbsp;4&nbsp;&nbsp;</td>
+<td>1:15 PM</td>
+<td><a href="javascript:directWindow('Hampton Roads Soccer Complex Field 15','No directions available','No comments')">HRSC 15</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle2">
+<td class="trstyleGame">Carolina Explosions&nbsp;&nbsp;2,&nbsp;&nbsp;&nbsp;&nbsp;Smithfield Hotshots&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;*</td>
+<td>2:00 PM</td>
+<td><a href="javascript:directWindow('Albemarle School Field 2','1210 US 17 Business   Elizabeth City NC
+Enter the Albemarle School parking lot across from Biggs Pontiac GMC
+The fields are adjacent to the parking lot and behind the Gym.
+Do not park on the grass','No comments')">ALB 2</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle1">
+<td class="trstyleGame" bgcolor="#FFFFFF">Beach FC Arsenal&nbsp;&nbsp;9,&nbsp;&nbsp;&nbsp;&nbsp;TSA Rovers FC&nbsp;&nbsp;2&nbsp;&nbsp;</td>
+<td>3:00 PM</td>
+<td><a href="javascript:directWindow('Hampton Roads Soccer Complex Field 15','No directions available','No comments')">HRSC 15</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr><td>&nbsp;</td></tr><tr class="tblSubheading">
+<td class="tblSubheading" colspan="100%" style="height:24px; text-indent:5px;">
+<b>Sat Sep 23, 2017</b>
+</td>
+</tr>
+<tr class="trstyle1">
+<td class="trstyleGame" bgcolor="#FFFFFF">CSC Griffins played Beach FC Norfolk United</td>
+<td>9:00 AM</td>
+<td><a href="javascript:directWindow('Centerville Complex Field 6','<br><B>Address for Centerville Soccer Complex:</b><br><br>
+
+1857 Centerville Turnpike, Chesapeake, VA 23322<br><br>
+
+<br><B>Directions from I-64 East or West:</b><br><br>
+ 
+Exit 291B, Highway 168 to Nag\'s Head/ Great Bridge. Take left fork for hwy 168 towards Nag\'s Head.  After approximately 5 miles, exit at 10B, Hanbury Rd East.  Hanbury will become Etheridge Manor Blvd.  Continue straight on this road until it ends at Centerville Turnpike.  Turn right onto Centerville Turnpike and go approximately 1.7 miles.  The entrance to the complex is on the left, just before the railroad tracks.<br><br> 
+
+<br><B>Directions from Greenbrier Parkway:</b><br><br>
+ 
+Traveling west/south on Greenbrier Parkway, cross Volvo Parkway and Kempsville Road.  At this point, the road becomes Butts Station Road.  Continue on Butts Station until it ends at Centerville Turnpike, approximately 2.2 miles.  Turn right, and follow Centerville Turnpike for approximately 5.2 miles.  The entrance to the complex is on the left, just before the railroad tracks.  ','Centervile Complex fields 6, 7 and 8 
+
+Weather Hotline: (757) 644-4529')">CC 6</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle2">
+<td class="trstyleGame">Beach FC Arsenal&nbsp;&nbsp;7,&nbsp;&nbsp;&nbsp;&nbsp;CUSC Sharks&nbsp;&nbsp;6&nbsp;&nbsp;</td>
+<td>11:30 AM</td>
+<td><a href="javascript:directWindow('Hampton Roads Soccer Complex Field 15','No directions available','No comments')">HRSC 15</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle1">
+<td class="trstyleGame" bgcolor="#FFFFFF">WBSC Sizzlers&nbsp;&nbsp;9,&nbsp;&nbsp;&nbsp;&nbsp;TSA Rovers FC&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;*</td>
+<td>3:00 PM</td>
+<td><a href="javascript:directWindow('Joliff Middle School Field 1','1021 Jolliff Rd
+Chesapeake, VA 23321
+
+[Plug this into your favorite GPS/Mapping app]','The field will be located towards the back of the school')">JMS 1</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle2">
+<td class="trstyleGame">Smithfield Hotshots&nbsp;&nbsp;3,&nbsp;&nbsp;&nbsp;&nbsp;Beach FC Panthers&nbsp;&nbsp;3&nbsp;&nbsp;</td>
+<td>5:00 PM</td>
+<td><a href="javascript:directWindow('Carrollton Nike Park 3','Carrollton Nike Park, 13036 Nike Park Road, Carrollton, Va 23314: 
+
+
+From Southside (Norfolk, VA Beach) 
+Travel via I-64 West to Hampton; take the second Mercury Blvd Exit - Route 258, this will put you on Mercury Blvd heading towards, Newport News/James River Bridge/Isle of Wight County/Carrollton. Travel approximately 4 miles to the James River Bridge, continue over the bridge. The road changes names to Route 17 South. Continue on Route 17 and turn right onto Smith\'s Neck Road (SR-669) Eagle Harbor Shopping Center will be on the right. Approximately �� mile turn left on Reynolds Drive (SR-669/665). Take a right onto Nike Park Road (SR-669). Travel approximately 2 miles park is on the left. 
+From Williamsburg: Travel via I-64 East to Hampton 
+Take the first Mercury Blvd Exit - Route 258, this will put you on Mercury Blvd heading towards, Newport News/James River Bridge/Isle of Wight County/Carrollton. Travel approximately 4 miles to the James River Bridge, continue over the bridge. The road changes names to Route 17 South. Continue on Route 17 and turn right onto Smith\'s Neck Road (SR-669) Eagle Harbor Shopping Center will be on the right. Approximately �� mile turn left on Reynolds Drive left (SR-669/665). Take a right onto Nike Park Road (SR-669). Travel approximately 2 miles park is on the left. 
+From Chesapeake: Travel via I-664 to the Portsmouth/Newport News/James River Bridge Interchange 
+Take the Newport News/ James River Bridge Exit. (This will put you on the merge for Route 17 North) Travel on Route 17 North for approximately 10 miles. Take a left at Smith\'s Neck Road (SR-669) Eagle Harbor Shopping Center will be on the left. Approximately �� mile turn left on Reynolds Drive (SR-669/665). Take a right onto Nike Park Road (SR-669). Travel approximately 2 miles park is on the left. ','No comments')">NIKE 3</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr><td>&nbsp;</td></tr><tr class="tblSubheading">
+<td class="tblSubheading" colspan="100%" style="height:24px; text-indent:5px;">
+<b>Sat Sep 30, 2017</b>
+</td>
+</tr>
+<tr class="trstyle1">
+<td class="trstyleGame" bgcolor="#FFFFFF">Beach FC Panthers&nbsp;&nbsp;1,&nbsp;&nbsp;&nbsp;&nbsp;Beach FC Arsenal&nbsp;&nbsp;4&nbsp;&nbsp;</td>
+<td>8:00 AM</td>
+<td><a href="javascript:directWindow('Hampton Roads Soccer Complex Field 11','No directions available','No comments')">HRSC 11</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle2">
+<td class="trstyleGame">Beach FC Norfolk United&nbsp;&nbsp;9,&nbsp;&nbsp;&nbsp;&nbsp;Smithfield Hotshots&nbsp;&nbsp;1&nbsp;&nbsp;</td>
+<td>10:30 AM</td>
+<td><a href="javascript:directWindow('Lake Taylor Soccer Complex Field 14','No directions available','No comments')">LT 14</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle1">
+<td class="trstyleGame" bgcolor="#FFFFFF">CUSC Sharks&nbsp;&nbsp;0,&nbsp;&nbsp;&nbsp;&nbsp;WBSC Sizzlers&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;*</td>
+<td>11:00 AM</td>
+<td><a href="javascript:directWindow('Centerville 10','No directions available','No comments')">CC10</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle2">
+<td class="trstyleGame">Carolina Explosions&nbsp;&nbsp;5,&nbsp;&nbsp;&nbsp;&nbsp;CSC Griffins&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;*</td>
+<td>12:30 PM</td>
+<td><a href="javascript:directWindow('Albemarle School Field 2','1210 US 17 Business   Elizabeth City NC
+Enter the Albemarle School parking lot across from Biggs Pontiac GMC
+The fields are adjacent to the parking lot and behind the Gym.
+Do not park on the grass','No comments')">ALB 2</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr><td>&nbsp;</td></tr><tr class="tblSubheading">
+<td class="tblSubheading" colspan="100%" style="height:24px; text-indent:5px;">
+<b>Sat Oct 14, 2017</b>
+</td>
+</tr>
+<tr class="trstyle1">
+<td class="trstyleGame" bgcolor="#FFFFFF">Carolina Explosions&nbsp;&nbsp;3,&nbsp;&nbsp;&nbsp;&nbsp;Beach FC Norfolk United&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;*</td>
+<td>10:00 AM</td>
+<td><a href="javascript:directWindow('Albemarle School Field 2','1210 US 17 Business   Elizabeth City NC
+Enter the Albemarle School parking lot across from Biggs Pontiac GMC
+The fields are adjacent to the parking lot and behind the Gym.
+Do not park on the grass','No comments')">ALB 2</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle2">
+<td class="trstyleGame">Beach FC Arsenal&nbsp;&nbsp;5,&nbsp;&nbsp;&nbsp;&nbsp;WBSC Sizzlers&nbsp;&nbsp;2&nbsp;&nbsp;</td>
+<td>12:00 PM</td>
+<td><a href="javascript:directWindow('Hampton Roads Soccer Complex Field 14','No directions available','No comments')">HRSC 14</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle1">
+<td class="trstyleGame" bgcolor="#FFFFFF">Carolina Explosions played Beach FC Panthers</td>
+<td>1:30 PM</td>
+<td><a href="javascript:directWindow('Albemarle School Field 2','1210 US 17 Business   Elizabeth City NC
+Enter the Albemarle School parking lot across from Biggs Pontiac GMC
+The fields are adjacent to the parking lot and behind the Gym.
+Do not park on the grass','No comments')">ALB 2</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle2">
+<td class="trstyleGame">CSC Griffins&nbsp;&nbsp;5,&nbsp;&nbsp;&nbsp;&nbsp;TSA Rovers FC&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;*</td>
+<td>1:30 PM</td>
+<td><a href="javascript:directWindow('Centerville Complex Field 6','<br><B>Address for Centerville Soccer Complex:</b><br><br>
+
+1857 Centerville Turnpike, Chesapeake, VA 23322<br><br>
+
+<br><B>Directions from I-64 East or West:</b><br><br>
+ 
+Exit 291B, Highway 168 to Nag\'s Head/ Great Bridge. Take left fork for hwy 168 towards Nag\'s Head.  After approximately 5 miles, exit at 10B, Hanbury Rd East.  Hanbury will become Etheridge Manor Blvd.  Continue straight on this road until it ends at Centerville Turnpike.  Turn right onto Centerville Turnpike and go approximately 1.7 miles.  The entrance to the complex is on the left, just before the railroad tracks.<br><br> 
+
+<br><B>Directions from Greenbrier Parkway:</b><br><br>
+ 
+Traveling west/south on Greenbrier Parkway, cross Volvo Parkway and Kempsville Road.  At this point, the road becomes Butts Station Road.  Continue on Butts Station until it ends at Centerville Turnpike, approximately 2.2 miles.  Turn right, and follow Centerville Turnpike for approximately 5.2 miles.  The entrance to the complex is on the left, just before the railroad tracks.  ','Centervile Complex fields 6, 7 and 8 
+
+Weather Hotline: (757) 644-4529')">CC 6</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle1">
+<td class="trstyleGame" bgcolor="#FFFFFF">CUSC Sharks&nbsp;&nbsp;2,&nbsp;&nbsp;&nbsp;&nbsp;Smithfield Hotshots&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;*</td>
+<td>3:00 PM</td>
+<td><a href="javascript:directWindow('Centerville 10','No directions available','No comments')">CC10</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr><td>&nbsp;</td></tr><tr class="tblSubheading">
+<td class="tblSubheading" colspan="100%" style="height:24px; text-indent:5px;">
+<b>Sat Oct 21, 2017</b>
+</td>
+</tr>
+<tr class="trstyle1">
+<td class="trstyleGame" bgcolor="#FFFFFF">Beach FC Norfolk United&nbsp;&nbsp;3,&nbsp;&nbsp;&nbsp;&nbsp;Beach FC Panthers&nbsp;&nbsp;1&nbsp;&nbsp;</td>
+<td>9:00 AM</td>
+<td><a href="javascript:directWindow('Lake Taylor Soccer Complex Field 14','No directions available','No comments')">LT 14</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle2">
+<td class="trstyleGame">WBSC Sizzlers played CSC Griffins</td>
+<td>10:30 AM</td>
+<td><a href="javascript:directWindow('Joliff Middle School Field 1','1021 Jolliff Rd
+Chesapeake, VA 23321
+
+[Plug this into your favorite GPS/Mapping app]','The field will be located towards the back of the school')">JMS 1</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle1">
+<td class="trstyleGame" bgcolor="#FFFFFF">TSA Rovers FC&nbsp;&nbsp;0,&nbsp;&nbsp;&nbsp;&nbsp;Carolina Explosions&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;*</td>
+<td>11:30 AM</td>
+<td><a href="javascript:directWindow('Warhill Soccer Complex 6','No directions available','No comments')">WAR 6</a></td>
+<td>&nbsp;</td>
+<td><font color="green">Time Change due to VSLI games scheduled</font></td>
+</tr>
+<tr class="trstyle2">
+<td class="trstyleGame">Smithfield Hotshots&nbsp;&nbsp;5,&nbsp;&nbsp;&nbsp;&nbsp;Beach FC Arsenal&nbsp;&nbsp;5&nbsp;&nbsp;</td>
+<td>12:00 PM</td>
+<td><a href="javascript:directWindow('Carrollton Nike Park 3','Carrollton Nike Park, 13036 Nike Park Road, Carrollton, Va 23314: 
+
+
+From Southside (Norfolk, VA Beach) 
+Travel via I-64 West to Hampton; take the second Mercury Blvd Exit - Route 258, this will put you on Mercury Blvd heading towards, Newport News/James River Bridge/Isle of Wight County/Carrollton. Travel approximately 4 miles to the James River Bridge, continue over the bridge. The road changes names to Route 17 South. Continue on Route 17 and turn right onto Smith\'s Neck Road (SR-669) Eagle Harbor Shopping Center will be on the right. Approximately �� mile turn left on Reynolds Drive (SR-669/665). Take a right onto Nike Park Road (SR-669). Travel approximately 2 miles park is on the left. 
+From Williamsburg: Travel via I-64 East to Hampton 
+Take the first Mercury Blvd Exit - Route 258, this will put you on Mercury Blvd heading towards, Newport News/James River Bridge/Isle of Wight County/Carrollton. Travel approximately 4 miles to the James River Bridge, continue over the bridge. The road changes names to Route 17 South. Continue on Route 17 and turn right onto Smith\'s Neck Road (SR-669) Eagle Harbor Shopping Center will be on the right. Approximately �� mile turn left on Reynolds Drive left (SR-669/665). Take a right onto Nike Park Road (SR-669). Travel approximately 2 miles park is on the left. 
+From Chesapeake: Travel via I-664 to the Portsmouth/Newport News/James River Bridge Interchange 
+Take the Newport News/ James River Bridge Exit. (This will put you on the merge for Route 17 North) Travel on Route 17 North for approximately 10 miles. Take a left at Smith\'s Neck Road (SR-669) Eagle Harbor Shopping Center will be on the left. Approximately �� mile turn left on Reynolds Drive (SR-669/665). Take a right onto Nike Park Road (SR-669). Travel approximately 2 miles park is on the left. ','No comments')">NIKE 3</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr><td>&nbsp;</td></tr><tr class="tblSubheading">
+<td class="tblSubheading" colspan="100%" style="height:24px; text-indent:5px;">
+<b>Sat Oct 28, 2017</b>
+</td>
+</tr>
+<tr class="trstyle1">
+<td class="trstyleGame" bgcolor="#FFFFFF">Beach FC Norfolk United&nbsp;&nbsp;3,&nbsp;&nbsp;&nbsp;&nbsp;Beach FC Arsenal&nbsp;&nbsp;3&nbsp;&nbsp;</td>
+<td>11:00 AM</td>
+<td><a href="javascript:directWindow('Lake Taylor Soccer Complex Field 15','No directions available','No comments')">LT 15</a></td>
+<td>&nbsp;</td>
+<td><font color="green">Alec did 1st half, Kate did 2nd half</font></td>
+</tr>
+<tr class="trstyle2">
+<td class="trstyleGame">CUSC Sharks&nbsp;&nbsp;1,&nbsp;&nbsp;&nbsp;&nbsp;Carolina Explosions&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;*</td>
+<td>1:00 PM</td>
+<td><a href="javascript:directWindow('Centerville 10','No directions available','No comments')">CC10</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle1">
+<td class="trstyleGame" bgcolor="#FFFFFF">Beach FC Panthers&nbsp;&nbsp;2,&nbsp;&nbsp;&nbsp;&nbsp;CSC Griffins&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;*</td>
+<td>1:30 PM</td>
+<td><a href="javascript:directWindow('Hampton Roads Soccer Complex Field 15','No directions available','No comments')">HRSC 15</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle2">
+<td class="trstyleGame">Beach FC Norfolk United&nbsp;&nbsp;5,&nbsp;&nbsp;&nbsp;&nbsp;TSA Rovers FC&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;*</td>
+<td>3:00 PM</td>
+<td><a href="javascript:directWindow('Lake Taylor Soccer Complex Field 15','No directions available','No comments')">LT 15</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle1">
+<td class="trstyleGame" bgcolor="#FFFFFF">Smithfield Hotshots&nbsp;&nbsp;1,&nbsp;&nbsp;&nbsp;&nbsp;WBSC Sizzlers&nbsp;&nbsp;4&nbsp;&nbsp;</td>
+<td>5:30 PM</td>
+<td><a href="javascript:directWindow('Carrollton Nike Park 3','Carrollton Nike Park, 13036 Nike Park Road, Carrollton, Va 23314: 
+
+
+From Southside (Norfolk, VA Beach) 
+Travel via I-64 West to Hampton; take the second Mercury Blvd Exit - Route 258, this will put you on Mercury Blvd heading towards, Newport News/James River Bridge/Isle of Wight County/Carrollton. Travel approximately 4 miles to the James River Bridge, continue over the bridge. The road changes names to Route 17 South. Continue on Route 17 and turn right onto Smith\'s Neck Road (SR-669) Eagle Harbor Shopping Center will be on the right. Approximately �� mile turn left on Reynolds Drive (SR-669/665). Take a right onto Nike Park Road (SR-669). Travel approximately 2 miles park is on the left. 
+From Williamsburg: Travel via I-64 East to Hampton 
+Take the first Mercury Blvd Exit - Route 258, this will put you on Mercury Blvd heading towards, Newport News/James River Bridge/Isle of Wight County/Carrollton. Travel approximately 4 miles to the James River Bridge, continue over the bridge. The road changes names to Route 17 South. Continue on Route 17 and turn right onto Smith\'s Neck Road (SR-669) Eagle Harbor Shopping Center will be on the right. Approximately �� mile turn left on Reynolds Drive left (SR-669/665). Take a right onto Nike Park Road (SR-669). Travel approximately 2 miles park is on the left. 
+From Chesapeake: Travel via I-664 to the Portsmouth/Newport News/James River Bridge Interchange 
+Take the Newport News/ James River Bridge Exit. (This will put you on the merge for Route 17 North) Travel on Route 17 North for approximately 10 miles. Take a left at Smith\'s Neck Road (SR-669) Eagle Harbor Shopping Center will be on the left. Approximately �� mile turn left on Reynolds Drive (SR-669/665). Take a right onto Nike Park Road (SR-669). Travel approximately 2 miles park is on the left. ','No comments')">NIKE 3</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr><td>&nbsp;</td></tr><tr class="tblSubheading">
+<td class="tblSubheading" colspan="100%" style="height:24px; text-indent:5px;">
+<b>Sat Nov 4, 2017</b>
+</td>
+</tr>
+<tr class="trstyle1">
+<td class="trstyleGame" bgcolor="#FFFFFF">CSC Griffins&nbsp;&nbsp;1,&nbsp;&nbsp;&nbsp;&nbsp;Beach FC Arsenal&nbsp;&nbsp;3&nbsp;&nbsp;</td>
+<td>9:00 AM</td>
+<td><a href="javascript:directWindow('Centerville Complex Field 6','<br><B>Address for Centerville Soccer Complex:</b><br><br>
+
+1857 Centerville Turnpike, Chesapeake, VA 23322<br><br>
+
+<br><B>Directions from I-64 East or West:</b><br><br>
+ 
+Exit 291B, Highway 168 to Nag\'s Head/ Great Bridge. Take left fork for hwy 168 towards Nag\'s Head.  After approximately 5 miles, exit at 10B, Hanbury Rd East.  Hanbury will become Etheridge Manor Blvd.  Continue straight on this road until it ends at Centerville Turnpike.  Turn right onto Centerville Turnpike and go approximately 1.7 miles.  The entrance to the complex is on the left, just before the railroad tracks.<br><br> 
+
+<br><B>Directions from Greenbrier Parkway:</b><br><br>
+ 
+Traveling west/south on Greenbrier Parkway, cross Volvo Parkway and Kempsville Road.  At this point, the road becomes Butts Station Road.  Continue on Butts Station until it ends at Centerville Turnpike, approximately 2.2 miles.  Turn right, and follow Centerville Turnpike for approximately 5.2 miles.  The entrance to the complex is on the left, just before the railroad tracks.  ','Centervile Complex fields 6, 7 and 8 
+
+Weather Hotline: (757) 644-4529')">CC 6</a></td>
+<td>&nbsp;</td>
+<td><font color="green">Time Change at CSC team request</font></td>
+</tr>
+<tr class="trstyle2">
+<td class="trstyleGame">CUSC Sharks&nbsp;&nbsp;2,&nbsp;&nbsp;&nbsp;&nbsp;Beach FC Norfolk United&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;*</td>
+<td>11:00 AM</td>
+<td><a href="javascript:directWindow('Centerville 10','No directions available','No comments')">CC10</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle1">
+<td class="trstyleGame" bgcolor="#FFFFFF">TSA Rovers FC&nbsp;&nbsp;2,&nbsp;&nbsp;&nbsp;&nbsp;Beach FC Panthers&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;*</td>
+<td>11:30 AM</td>
+<td><a href="javascript:directWindow('Warhill Soccer Complex 6','No directions available','No comments')">WAR 6</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle2">
+<td class="trstyleGame">WBSC Sizzlers&nbsp;&nbsp;1,&nbsp;&nbsp;&nbsp;&nbsp;Carolina Explosions&nbsp;&nbsp;0&nbsp;&nbsp;</td>
+<td>1:30 PM</td>
+<td><a href="javascript:directWindow('Joliff Middle School Field 1','1021 Jolliff Rd
+Chesapeake, VA 23321
+
+[Plug this into your favorite GPS/Mapping app]','The field will be located towards the back of the school')">JMS 1</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr class="trstyle1">
+<td class="trstyleGame" bgcolor="#FFFFFF">TSA Rovers FC&nbsp;&nbsp;1,&nbsp;&nbsp;&nbsp;&nbsp;Smithfield Hotshots&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;*</td>
+<td>3:00 PM</td>
+<td><a href="javascript:directWindow('Warhill Soccer Complex 6','No directions available','No comments')">WAR 6</a></td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+
+</table>
+
+
+
+	<!--     </table>  -->
+	
+	  <br>
+	  <center>
+		<span class='textbotlinks'>
+
+		<a href="/ViewLeague.jsp?YSLkey=LGSXLGLCKRGGGGGGGHKKSCHHLK&leagueId=371">View League</a> | 
+		<a href="/UserHome.jsp?YSLkey=LGSXLGLCKRGGGGGGGHKKSCHHLK">User Home</a> </span><br><br>
+	  </center></td>
+</td></tr>
+</table>
+<br>
+</body>
+</html>
