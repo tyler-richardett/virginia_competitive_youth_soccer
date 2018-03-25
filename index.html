@@ -250,7 +250,7 @@ div.tocify {
 <h2>Mapping</h2>
 <div id="assigning-location-information-to-fields" class="section level3">
 <h3>Assigning Location Information to Fields</h3>
-<p>To attribute an “average” location to each youth soccer club, I first had to match a set of coordinates to each field on which at least one game was played. I used functions from the <code>dplyr</code> package to combine all address variables into one, and the <code>street2coordinates</code> function from the <code>RDSTK</code> to translate those addresses into sets of coordinates.</p>
+<p>To attribute an “average” location to each youth soccer club, I first had to match a set of coordinates to each field on which at least one game was played. I used functions from the <code>dplyr</code> package to combine all address variables into one, and the <code>street2coordinates</code> function from the <code>RDSTK</code> package to translate those addresses into sets of coordinates.</p>
 <pre class="r"><code>## Import data from Excel file
 allFields &lt;- read_xlsx(&quot;Process Files/Full Dataset.xlsx&quot;, &quot;Fields&quot;)
 
