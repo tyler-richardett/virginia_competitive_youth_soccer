@@ -1,0 +1,522 @@
+---
+title: "Competitive Youth Soccer in Virginia"
+author: "Tyler Richardett"
+date: "3/23/2018"
+output: 
+        html_document:
+                toc: true
+                toc_depth: 3
+                toc_float: true
+                theme: flatly
+                code_folding: show
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+
+library(dplyr)
+library(ggplot2)
+library(scales)
+library(ROSE)
+library(rpart)
+library(rpart.plot)
+library(readxl)
+library(gmapsdistance)
+library(measurements)
+library(tigris)
+library(RDSTK)
+library(stringr)
+library(censusr)
+
+theme_TCR <- function() {
+        theme_bw(base_size = 12, base_family = "Avenir") %+replace% 
+                theme(
+                        panel.border = element_blank(),
+                        axis.line.x = element_line(color = "black", size = 0.5),
+                        axis.ticks.y = element_blank(),
+                        axis.text = element_text(color = "black", size = 11),
+                        panel.grid.major.x = element_blank(),
+                        panel.grid.major.y = element_line(linetype = "dotted", 
+                                                          color = "grey"),
+                        panel.grid.minor = element_blank(),
+                        plot.title = element_text(face = "bold", size = 16),
+                        axis.title.x = element_text(margin = margin(20,0,10,0)),
+                        axis.title.y = element_text(margin = margin(0,15,0,0), angle = 90),
+                        legend.position = "bottom",
+                        legend.title = element_blank(),
+                        legend.direction = "horizontal",
+                        legend.box = "horizontal",
+                        legend.key.size = unit(10, "pt"),
+                        plot.margin = margin(r = 30, t = 10),
+                        panel.background = element_rect(fill = "transparent", color = NA),
+                        plot.background = element_rect(fill = "transparent", color = NA),
+                        legend.background = element_rect(fill = "transparent", color = NA)
+                ) 
+}
+```
+
+## Data Collection
+
+Schedule information was obtained from league websites. Original HTML/CSV files, cleaned CSV files, and accompanying R code are located [here](https://github.com/tyler-richardett/youth-soccer-virginia/tree/master/Schedules/Original).
+
+Cost information was collected from each club’s public website. If cost information was not available, club administrators were asked via email to provide fee schedules for the 2017–18 seasons.
+
+Demographic information for each census tract was gathered from the U.S. Census Bureau’s 2012–16 American Community Survey 5-year estimates. Median household income was calculated using table B19013, poverty rates for families with children under 18 were calculated using table S1702, and race information was calculated using table B03002.
+
+## Mapping
+
+### Assigning Location Information to Fields
+
+To attribute an "average" location to each youth soccer club, I first had to match a set of coordinates to each field on which at least one game was played. I used functions from the `dplyr` package to combine all address variables into one, and the `street2coordinates` function from the `RDSTK` to translate those addresses into sets of coordinates.
+
+``` {r allFieldsCoords, eval = FALSE}
+## Import data from Excel file
+allFields <- read_xlsx("Process Files/Full Dataset.xlsx", "Fields")
+
+## Generate latitudes and longitudes from field addresses
+allFields <- allFields %>% 
+        mutate(Address = paste0(`Street Address`, ", ", City, ", ", State, " ", `Zip Code`))
+
+latsLongs <- data.frame()
+
+for(i in 1:length(allFields$Address)) {
+        tmp <- street2coordinates(allFields$Address[i])
+        tmp$FieldID <- allFields$FieldID[i]
+        latsLongs <- rbind(latsLongs, tmp)
+}
+
+latsLongs <- latsLongs %>% select(FieldID, lat = latitude, lon = longitude)
+allFieldsCoords <- allFields %>% 
+        left_join(latsLongs, "FieldID")
+```
+
+To later subset all Virginia census tracts by whether they contained a field, I used the `append_geoid` function from the `censusr` package to translate each set of coordinates into census tract IDs.
+
+``` {r allFieldsCoordsTracts, eval = FALSE}
+## Generate GEOIDs from latitudes and longitudes
+allFieldsCoordsTracts <- allFieldsCoords
+allFieldsCoordsTracts$GEOID <- append_geoid(allFieldsCoords[,8:9])$geoid
+allFieldsCoordsTracts <- allFieldsCoordsTracts %>% 
+        select(Name:Address, Latitude = lat, Longitude = lon, GEOID) %>% 
+        mutate(GEOID = substring(GEOID, 1, 11))
+```
+
+``` {r allFieldsCoordsTracts.hidden, echo = FALSE}
+allFieldsCoordsTracts <- read.csv("Process Files/allFieldsCoordsTracts.csv", stringsAsFactors = FALSE, na.strings = "")
+```
+
+### Creating and Cleaning a Master Data Frame for Game Data
+
+To assign proper weighting in determining an "average" location for each club, I joined information on each team, club, and field to the data frame containing game-specific information. 
+
+``` {r allGames}
+## Import data from Excel file
+allTeams <- read_xlsx("Process Files/Full Dataset.xlsx", "Teams")
+allGames <- read_xlsx("Process Files/Full Dataset.xlsx", "Games")
+allClubs <- read_xlsx("Process Files/Full Dataset.xlsx", "Clubs")
+
+## Keep only necessary information to subset games
+allFieldsKey <- allFieldsCoordsTracts %>% 
+        select(FieldID, FieldCity = City, FieldState = State, FieldLatitude = Latitude, FieldLongitude = Longitude)
+allTeamsKey <- allTeams %>% 
+        select(HomeTeamID = TeamID, Age.Group = `Age Group`, Gender, LeagueID)
+allClubsKeyHome <- allClubs %>% 
+        select(HomeClubID = ClubID, HomeClubName = Name, HomeClubState = State)
+allClubsKeyAway <- allClubs %>% 
+        select(AwayClubID = ClubID, AwayClubName = Name, AwayClubState = State)
+
+## Merge and clean games
+allGames <- allGames %>% 
+        left_join(allFieldsKey, "FieldID") %>% 
+        left_join(allTeamsKey, "HomeTeamID") %>% 
+        left_join(allClubsKeyHome, "HomeClubID") %>% 
+        left_join(allClubsKeyAway, "AwayClubID")
+```
+
+The elite leagues in the data set included teams from outside the state of Virginia, so I filtered those out. I also filtered out mid-season tournament games, as they are played at neutral locations.
+
+``` {r virginiaGames}
+## Subset home games for Virginia clubs
+virginiaGames <- allGames %>% 
+        filter(HomeClubState == "VA" | AwayClubState == "VA")
+
+## Remove Development Academy showcases games
+virginiaGames <- virginiaGames %>% 
+        filter(!(LeagueID == "LG0011" & FieldCity == "Advance" & FieldState == "NC"))
+virginiaGames <- virginiaGames %>% 
+        filter(!(LeagueID == "LG0011" & FieldCity == "Lakewood Ranch" & FieldState == "FL"))
+virginiaGames <- virginiaGames %>% 
+        filter(!(LeagueID == "LG0011" & FieldCity == "Frisco" & FieldState == "TX"))
+
+## Remove Club Champions League college showcase games
+virginiaGames <- virginiaGames %>% 
+        filter(!(LeagueID == "LG0004" & FieldID %in% allFieldsCoordsTracts$FieldID[grep("^RiverCity", allFieldsCoordsTracts$Name)]))
+
+## Remove Club Champions League ScrimmageFest games
+virginiaGames <- virginiaGames %>% 
+        filter(!(LeagueID == "LG0004" & Age.Group %in% c("U10", "U09") & FieldID %in% allFieldsCoordsTracts$FieldID[grep("^FFC Park", allFieldsCoordsTracts$Name)]))
+
+## Separate into home and away
+virginiaGamesHome <- virginiaGames %>% filter(HomeClubState == "VA")
+virginiaGamesAway <- virginiaGames %>% filter(AwayClubState == "VA")
+```
+
+### Calculating an Average Location for Each Club
+
+With a clean data frame containing a record of every game played by a team from Virginia, I next calculated the "average" location for each club. In order to remove outliers (fields located more than 50 km from the initially-calculated geographic center), I borrowed a custom function from [Stack Overflow](https://stackoverflow.com/questions/24439073/removing-spatial-outliers-lat-and-long-coordinates-in-r).
+
+``` {r virginiaClubs, eval = FALSE}
+## Function that will calculate distance in km from geographic mean to each coordinate
+earth.dist <- function (long1, lat1, long2, lat2) {
+        rad <- pi/180
+        a1 <- lat1 * rad
+        a2 <- long1 * rad
+        b1 <- lat2 * rad
+        b2 <- long2 * rad
+        dlon <- b2 - a2
+        dlat <- b1 - a1
+        a <- (sin(dlat/2))^2 + cos(a1) * cos(b1) * (sin(dlon/2))^2
+        c <- 2 * atan2(sqrt(a), sqrt(1 - a))
+        R <- 6378.145
+        d <- R * c
+        return(d)
+}
+
+## Calculate geographic mean and remove outliers (>= 50 km from center)
+virginiaClubsKey <- virginiaGamesHome %>% 
+        group_by(HomeClubID) %>% 
+        summarize(Name = unique(HomeClubName), ClubAvgLatitude = mean(FieldLatitude, na.rm = TRUE), ClubAvgLongitude = mean(FieldLongitude, na.rm = TRUE))
+outliersKey <- virginiaGamesHome %>% 
+        left_join(virginiaClubsKey, "HomeClubID")
+outliersKey <- outliersKey %>% 
+        group_by(HomeClubID, FieldID) %>% summarize(Distance = earth.dist(FieldLongitude, FieldLatitude, ClubAvgLongitude, ClubAvgLatitude)[1])
+outliers <- outliersKey %>% 
+        filter(Distance >= 50)
+
+for(i in 1:nrow(outliers)){
+        virginiaGamesHome <- virginiaGamesHome %>% 
+                filter(!(HomeClubID == outliers$HomeClubID[i] & FieldID == outliers$FieldID[i]))
+}
+
+## Calculate number of teams per club
+allClubsCounts <- allTeams %>% 
+        group_by(ClubID) %>% 
+        summarize(Teams = length(TeamID))
+virginiaClubs <- virginiaGamesHome %>% 
+        group_by(HomeClubID) %>% 
+        summarize(Name = unique(HomeClubName), Latitude = mean(FieldLatitude, na.rm = TRUE), Longitude = mean(FieldLongitude, na.rm = TRUE)) %>% 
+        dplyr::rename(ClubID = HomeClubID)
+virginiaClubs <- virginiaClubs %>% left_join(allClubsCounts)
+```
+
+### Creating Census Tract Shapefiles with Demographic Information
+
+The last component of the interactive map was the census tract polygons that provide context in the form of select demographic information (i.e., median household income, minority population, and poverty rates). Using the U.S. Census Bureau's [American Fact Finder](https://factfinder.census.gov/faces/nav/jsf/pages/index.xhtml), I located and downloaded the tables containing estimates for every census tract in Virginia. And using the code below, I isolated and calculated only the necessary information from those tables.
+
+``` {r virginiaTracts}
+## Import poverty rates for Virginia census tracts
+virginiaTractsPoverty <- read.csv("Process Files/ACS16_Poverty_FamiliesUnder18.csv", stringsAsFactors = FALSE, na.strings = c("-", "**", "(X)", ""), colClasses = c(rep("character", 3), rep("numeric", 20), rep("character", 580)))
+virginiaTractsPoverty <- virginiaTractsPoverty %>% 
+        select(GEO.id2, HC02_EST_VC02) %>% 
+        dplyr::rename(GEOID = GEO.id2, Poverty.Rate = HC02_EST_VC02) %>% 
+        mutate(Poverty.Rate = as.numeric(Poverty.Rate))
+
+## Import race information, calculate minority percentages for Virginia census tracts
+virginiaTractsRace <- read.csv("Process Files/ACS16_Race.csv", stringsAsFactors = FALSE, na.strings = c("*****", ""), colClasses = c(rep("character", 3), rep("numeric", 42)))
+virginiaTractsRace <- virginiaTractsRace %>% 
+        select(GEO.id2, HD01_VD01, HD01_VD03, HD01_VD04, HD01_VD05, HD01_VD06, HD01_VD07, HD01_VD12) %>% 
+        dplyr::rename(GEOID = GEO.id2, Total = HD01_VD01, White = HD01_VD03, Black = HD01_VD04, American.Indian = HD01_VD05, Asian = HD01_VD06, Pacific.Islander = HD01_VD07, Hispanic = HD01_VD12) %>% 
+        mutate(White.Percent = (White/Total)*100, Minority.Percent = (1-(White/Total))*100, Black.Percent = (Black/Total)*100, American.Indian.Percent = (American.Indian/Total)*100, Asian.Percent = (Asian/Total)*100, Pacific.Islander.Percent = (Pacific.Islander/Total)*100, Hispanic.Percent = (Hispanic/Total)*100) %>% 
+        select(GEOID, White.Percent:Hispanic.Percent)
+
+## Import HHI for Virginia census tracts
+virginiaTractsMedianHHI <- read.csv("Process Files/ACS16_MedianHHI.csv", stringsAsFactors = FALSE, na.strings = c("-", "**", ""))
+virginiaTractsMedianHHI <- virginiaTractsMedianHHI %>% 
+        select(GEO.id2, HD01_VD01) %>% 
+        dplyr::rename(GEOID = GEO.id2, Household.Income = HD01_VD01) %>% 
+        mutate(GEOID = as.character(GEOID), Household.Income = as.numeric(Household.Income))
+virginiaTractsMedianHHI$HHI.Factor <- cut(virginiaTractsMedianHHI$Household.Income, c(0, 25000, 50000, 75000, 100000, max(virginiaTractsMedianHHI$Household.Income, na.rm = TRUE)), labels = c("Under $25,000", "$25,000-49,999", "$50,000-74,999", "$75,000-99,999", "$100,000+"))
+
+## Merge all
+virginiaTracts <- virginiaTractsRace %>% 
+        left_join(virginiaTractsPoverty) %>% 
+        left_join(virginiaTractsMedianHHI)
+```
+
+Using the convenient `tracts` function from the `tigris` package, I downloaded and read in simplified census tract shapefiles from the U.S. Census Bureau. And using the `geo_join` function from the same package, I joined the demographic information to the spatial data frame.
+
+``` {r virginiaTractsShapefiles, eval = FALSE}
+## Import virginia census tract shapefiles
+virginiaTractsShapefiles <- tracts("VA", cb = TRUE)
+
+## Merge
+virginiaTractsShapefiles <- geo_join(virginiaTractsShapefiles, virginiaTracts, "GEOID", "GEOID")
+```
+
+To view the interactive map, which allows you to shade the census tracts to represent each type of demographic estimates, as well as to filter the clubs/teams by age group, gender, and league, view the application [here](https://tricha3.shinyapps.io/youth-soccer-virginia/).
+
+## Representation
+
+### Isolating Census Tracts Containing Fields
+
+To gauge just how the areas in which opportunities are available were representative of the state as a whole, I first isolated the census tracts containing at least one field.
+
+``` {r virginiaTractsFields}
+## Isolate census tracts containing fields in Virginia
+virginiaFieldsCoordsTracts <- allFieldsCoordsTracts %>% 
+        filter(State == "VA")
+virginiaTractsFields <- data.frame(GEOID = unique(virginiaFieldsCoordsTracts$GEOID))
+
+## Merge
+virginiaTractsFields <- virginiaTractsFields %>% 
+        mutate(GEOID = as.character(GEOID)) %>% 
+        left_join(virginiaTracts)
+```
+
+The code below reshapes and combines the data frames, preparing it for the `ggplot2` charting functions. For each of the three types of demographic estimates, I used overlapping sets density curves (one in each figure for the census tracts containing fields, the other for all census tracts) to measure representation.
+
+```{r densityPlotReshape}
+## Reshape data for ggplot2
+virginiaTractsFields <- virginiaTractsFields %>% 
+        mutate(Type = "Virginia Tracts with Fields") %>% 
+        select(Type, GEOID:HHI.Factor)
+virginiaTracts <- virginiaTracts %>% 
+        mutate(Type = "All Virginia Tracts") %>% 
+        select(Type, GEOID:HHI.Factor)
+
+virginiaComparison <- rbind(virginiaTractsFields[,c(1,4,10,11)], virginiaTracts[,c(1,4,10,11)])
+virginiaComparison$Type <- as.factor(virginiaComparison$Type)
+virginiaComparison <- virginiaComparison %>% 
+        mutate(Minority.Percent = Minority.Percent/100, Poverty.Rate = Poverty.Rate/100, Household.Income = Household.Income/1000)
+```
+
+### By Median Household Income
+
+```{r densityPlots1, echo = FALSE, results = TRUE}
+ggplot(virginiaComparison, aes(x = Household.Income, fill = Type)) + 
+        geom_density(alpha = 0.5) + 
+        theme_TCR() + 
+        scale_y_continuous(expand = c(0,0)) +
+        scale_fill_manual(values = c("grey50", "coral1"),
+                          labels = c("All Virginia Tracts    ",
+                                     "Virginia Tracts with Fields")) +
+        scale_x_continuous(labels = dollar_format("$", "K")) +
+        ylab("Density") +
+        xlab("Household Income (2016 Dollars)")
+```
+
+### By Poverty Rate
+
+```{r densityPlots2, echo = FALSE, results = TRUE}
+ggplot(virginiaComparison, aes(x = Poverty.Rate, fill = Type)) + 
+        geom_density(alpha = 0.5) + 
+        theme_TCR() + 
+        scale_y_continuous(expand = c(0,0)) +
+        scale_fill_manual(values = c("grey50", "coral1"),
+                          labels = c("All Virginia Tracts    ",
+                                     "Virginia Tracts with Fields")) +
+        scale_x_continuous(labels = percent_format()) +
+        ylab("Density") +
+        xlab("Poverty Rate (Families with Children Under 18)")
+# ggsave("densityPlot_Poverty.png", width = 5, height = 4, units = "in", bg = "transparent")
+```
+
+### By Minority Population
+
+```{r densityPlots3, echo = FALSE, results = TRUE}
+ggplot(virginiaComparison, aes(x = Minority.Percent, fill = Type)) + 
+        geom_density(alpha = 0.5) + 
+        theme_TCR() + 
+        scale_y_continuous(expand = c(0,0)) +
+        scale_fill_manual(values = c("grey50", "coral1"),
+                          labels = c("All Virginia Tracts    ",
+                                     "Virginia Tracts with Fields")) +
+        scale_x_continuous(labels = percent_format()) +
+        ylab("Density") +
+        xlab("Share of Nonwhite Residents")
+```
+
+### Checking for Predictability
+
+The figures above indicated that opportunity areas were representative in terms of race, but not in terms of economic security. I sought to take that a step further and see how strong of a predictor median household income and/or poverty rates were in determining whether or not a census tract contained at least one field. Building a decision tree would give me that predictive model, yet still allow me to interpret which variables were most influential.
+
+However, because I was dealing with imbalanced classes, I would first need to resample. After some [research](https://www.analyticsvidhya.com/blog/2016/03/practical-guide-deal-imbalanced-classification-problems/), I decided to employ the `ROSE` (Random Over Sampling Examples) package to synthetically generate data with balanced classes.
+
+```{r decisionTree}
+virginiaTree <- virginiaTracts %>% 
+        mutate(Field = ifelse(GEOID %in% virginiaTractsFields$GEOID, TRUE, FALSE)) %>% 
+        select(Minority.Percent, Poverty.Rate, Household.Income, Field)
+virginiaTree$Field <- as.factor(virginiaTree$Field)
+virginiaTree <- virginiaTree[complete.cases(virginiaTree),]
+
+virginiaTreeRose <- ROSE(Field ~ ., virginiaTree, seed = 1)$data
+virginiaTreeRoseFit <- rpart(Field ~ ., virginiaTreeRose)
+```
+
+The decision tree below confirmed my suspicion. Though not overwhelmingly so (see the area under the curve calculation below), median household income and poverty rates were effective predictors in determining whether or not a census tract contained at least one field.
+
+```{r decisionTreePlot, echo = FALSE, results = TRUE}
+rpart.plot(virginiaTreeRoseFit, nn = TRUE, branch.lty = 3, extra = 104)
+```
+
+``` {r decisionTreeAUC, fig.show = "hide"}
+roc.curve(virginiaTreeRose$Field, predict(virginiaTreeRoseFit, newdata = virginiaTreeRose)[,2])
+```
+
+## Investment
+
+### Calculating Number of Games Played by Each Team
+
+To quantify the changing level of investment required of parents and families who seek more competitive playing environments for their children, I first used the master data frame containing game data to count the number of games played by each team in the sample. This would later allow me to appropriately weight cost and travel information.
+
+This part of the study began with the assumption that competition level, financial cost, and travel were all correlated variables. That is, as level of play rose, so too did annual fees, distance traveled, and time spent. Therefore, I excluded all teams for which I was unable to locate information on team and club fees.
+
+```{r investmentTeamsGameCount, eval = FALSE}
+## Count games per team
+virginiaTeamsCost <- allTeams %>% filter(!is.na(Cost))
+virginiaGamesTeamsCostHome <- virginiaGames %>% 
+        filter(HomeTeamID %in% virginiaTeamsCost$TeamID) %>% count(HomeTeamID) %>% 
+        dplyr::rename(TeamID = HomeTeamID, HomeGamesCount = n)
+virginiaGamesTeamsCostAway <- virginiaGames %>%
+        filter(AwayTeamID %in% virginiaTeamsCost$TeamID) %>% 
+        count(AwayTeamID) %>% 
+        dplyr::rename(TeamID = AwayTeamID, AwayGamesCount = n)
+virginiaGamesTeamsCost <- virginiaGamesTeamsCostHome %>% 
+        full_join(virginiaGamesTeamsCostAway, "TeamID")
+virginiaGamesTeamsCost <- virginiaGamesTeamsCost %>% 
+        mutate(Games = rowSums(select(., contains("Count")), na.rm = TRUE)) %>% 
+        select(TeamID, Games)
+virginiaTeamsCost <- virginiaTeamsCost %>% 
+        left_join(virginiaGamesTeamsCost)
+
+## Remove outliers
+virginiaTeamsCost <- virginiaTeamsCost %>% filter(Games < 14 & Games > 4)
+```
+
+### Calculating Travel Time and Distance for Each Team
+
+Using the convenient Google Maps Distance Matrix API wrappers provided in the `gmapsdistance` package, I calculated the total travel distance and time for each team. The origin location for each calculation was the "average" club location determined in the first part of the study, and the destination was the location of the field at which each away game was played.
+
+The Google API returns time in seconds and distance in meters, so I used the `conv_unit` function from the `measurements` package to convert those variables to minutes and miles, respectively.
+
+``` {r virginiaInvestmentTravel, eval = FALSE}
+## Filter games with teams of interest as away
+virginiaGamesTeamsTravel <- virginiaGames %>% 
+        filter(AwayTeamID %in% virginiaTeamsCost$TeamID) %>% 
+        select(GameID, AwayClubID, AwayTeamID, FieldLatitude, FieldLongitude)
+
+## Join club location information
+virginiaClubsKey <- virginiaClubs %>% 
+        select(AwayClubID = ClubID, ClubLatitude = Latitude, ClubLongitude = Longitude)
+virginiaGamesTeamsTravel <- virginiaGamesTeamsTravel %>% 
+        left_join(virginiaClubsKey) %>% 
+        filter(!is.na(FieldLatitude) & !is.na(FieldLongitude) & !is.na(ClubLatitude) & !is.na(ClubLongitude))
+virginiaGamesTeamsTravel <- virginiaGamesTeamsTravel %>% 
+        mutate(Origin = paste0(as.character(round(ClubLatitude, 5)), "+", as.character(round(ClubLongitude, 5))), Destination = paste0(as.character(FieldLatitude), "+", as.character(FieldLongitude)))
+
+## Use Google Maps API to calculate distance traveled
+virginiaGamesGMaps <- data.frame()
+
+for(i in 1:nrow(virginiaGamesTeamsTravel)) {
+        tmp <- gmapsdistance(virginiaGamesTeamsTravel$Origin[i], virginiaGamesTeamsTravel$Destination[i], mode = "driving")
+        tmp <- data.frame(Time = tmp$Time, Distance = tmp$Distance, Status = tmp$Status, stringsAsFactors = FALSE)
+        virginiaGamesGMaps <- rbind(virginiaGamesGMaps, tmp)
+}
+
+## Convert second to minutes, meters to miles
+virginiaGamesGMaps <- virginiaGamesGMaps %>% 
+        mutate(Time = Time/60, Distance = conv_unit(Distance, "m", "mi")) %>% select(Time, Distance)
+
+## Add time and distance to data frame with team IDs
+virginiaGamesTeamsTravel <- cbind(virginiaGamesTeamsTravel, virginiaGamesGMaps)
+
+## Summarize total travel by team
+virginiaGamesTeamsTravel <- virginiaGamesTeamsTravel %>% 
+        group_by(AwayTeamID) %>% 
+        summarize(Time = sum(Time), Distance = sum(Distance)) %>% 
+        dplyr::rename(TeamID = AwayTeamID)
+virginiaGamesTeamsTravel <- virginiaGamesTeamsTravel %>% 
+        left_join(virginiaGamesTeamsCostAway)
+```
+
+### Weighting Cost, Distance, and Time by Games Played
+
+Next, I weighted the cost, distance, and time variables by the number of games each team played. The values used in the final analysis represented the investment associated with a single, eight-game season, in which four games were played away from home.
+
+```{r virginiaInvestment, eval = FALSE}
+## Join travel information and weight
+virginiaTeamsCost <- virginiaTeamsCost %>% left_join(virginiaGamesTeamsTravel)
+virginiaTeamsInvestment <- virginiaTeamsCost %>% 
+        select(TeamID, `Age Group`, Gender, LeagueID, TotalCost = Cost, CoachPaid, TotalGames = Games, TotalTime = Time, TotalDistance = Distance, AwayGames = AwayGamesCount) %>% 
+        filter(!is.na(TotalDistance)) %>% mutate(TotalTime = TotalTime*2, TotalDistance = TotalDistance*2)
+virginiaTeamsInvestment <- virginiaTeamsInvestment %>% 
+        mutate(WeightedCost = round(((TotalCost*8)/TotalGames)/2, 2), WeightedTime = round((TotalTime*4)/AwayGames), WeightedDistance = round((TotalDistance*4)/AwayGames))
+```
+
+### Determining Correlation and Separation Among Competition Levels
+
+To limit the number of classes, I manually split each of the 13 leagues in the sample into five tiers, or competition levels. The first included elite leagues with participants from all over the country (e.g., U.S. Soccer Development Academy), the second included elite leagues with participants from a broader region (e.g., Eastern Development Program), the third included only the Club Champions League II, the fourth included competitive leagues with participants from a smaller region (e.g., Old Dominion Soccer League), and the fifth included leagues with participants transitioning from recreational to competitive soccer (e.g., Tidewater Advanced Soccer League).
+
+```{r splitTiers, eval = FALSE}
+## Split by competition level
+virginiaTeamsInvestment$LeagueTier <- NA
+virginiaTeamsInvestment$LeagueTier[virginiaTeamsInvestment$LeagueID %in% c("LG0011", "LG0012")] <- "Tier 1"
+virginiaTeamsInvestment$LeagueTier[virginiaTeamsInvestment$LeagueID %in% c("LG0010", "LG0006", "LG0004")] <- "Tier 2"
+virginiaTeamsInvestment$LeagueTier[virginiaTeamsInvestment$LeagueID %in% c("LG0013")] <- "Tier 3"
+virginiaTeamsInvestment$LeagueTier[virginiaTeamsInvestment$LeagueID %in% c("LG0001", "LG0002", "LG0003", "LG0005", "LG0007", "LG0009")] <- "Tier 4"
+virginiaTeamsInvestment$LeagueTier[virginiaTeamsInvestment$LeagueID == "LG0008"] <- "Tier 5"
+virginiaTeamsInvestment$LeagueTier <- as.factor(virginiaTeamsInvestment$LeagueTier)
+```
+
+As it turns out, the original assumption was incorrect. Competition level, financial cost, and travel were *not* all correlated, which the scatter plots below demonstrate. There was *some* separation of classes, but the linear relationship between distance and cost was very weak (R-squared value of less than 0.05).
+
+```{r virginiaInvestmentScatter, echo = FALSE, results = TRUE}
+virginiaTeamsInvestment <- read.csv("Process Files/virginiaTeamsInvestment.csv", na.strings = "", colClasses = c(rep("character", 4), "numeric", "character", rep("numeric", 7), "factor"))
+
+ggplot(virginiaTeamsInvestment, aes(x = WeightedCost, y = WeightedDistance)) + 
+        geom_point() + 
+        geom_smooth(method = "lm", color = "coral1") +
+        theme_TCR() +
+        scale_y_continuous(labels = dollar_format("")) +
+        scale_x_continuous(labels = dollar_format()) +
+        theme(axis.line = element_line(color = "black", size = 0.5),
+              panel.grid.major.x = element_line(linetype = "dotted", color = "grey"))
+
+ggplot(virginiaTeamsInvestment, aes(x = WeightedCost, y = WeightedDistance, color = LeagueTier)) + 
+        geom_point() + 
+        theme_TCR() +
+        scale_y_continuous(labels = dollar_format("")) +
+        scale_x_continuous(labels = dollar_format()) +
+        theme(axis.line = element_line(color = "black", size = 0.5),
+              panel.grid.major.x = element_line(linetype = "dotted", color = "grey"))
+```
+
+However, that wrong assumption became a key finding. Team and club fees remain fairly constant among most competitive leagues. On the other hand, travel distance and time increase exponentially as competition level rises. As shown by the figures below, teams competing at the highest level are expected to travel just under 2,000 miles round-trip within a single season, on average.
+
+In a conversation dominated by fees, transportation continues to be overlooked. A majority of clubs in this study offer full and partial scholarships to players from low-income backgrounds, but as one club administrator shared, these are often turned down by families because of the cost and time to transport players to practices and games.
+
+```{r boxplots, echo = FALSE}
+## Cost
+ggplot(virginiaTeamsInvestment, aes(x = LeagueTier, y = WeightedCost)) + 
+        geom_boxplot(fill = "coral1", alpha = 0.9) + 
+        theme_TCR() +
+        scale_y_continuous(expand = c(0,0), labels = dollar_format()) +
+        ylab("Single-Season Cost") +
+        xlab("Level of Play")
+
+## Travel distance
+ggplot(virginiaTeamsInvestment, aes(x = LeagueTier, y = WeightedDistance)) + 
+        geom_boxplot(fill = "coral1", alpha = 0.9) + 
+        theme_TCR() +
+        scale_y_continuous(expand = c(0,0), labels = dollar_format("")) +
+        ylab("Single-Season Travel Distance (Miles)") +
+        xlab("Level of Play")
+
+## Travel time
+ggplot(virginiaTeamsInvestment, aes(x = LeagueTier, y = WeightedTime/60)) + 
+        geom_boxplot(fill = "coral1", alpha = 0.9) + 
+        theme_TCR() +
+        scale_y_continuous(expand = c(0,0)) +
+        ylab("Single-Season Travel Time (Hours)") +
+        xlab("Level of Play")
+```
