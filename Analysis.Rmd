@@ -473,7 +473,7 @@ As it turns out, the original assumption was incorrect. Competition level, finan
 ```{r virginiaInvestmentScatter, echo = FALSE, results = TRUE}
 virginiaTeamsInvestment <- read.csv("Process Files/virginiaTeamsInvestment.csv", na.strings = "", colClasses = c(rep("character", 4), "numeric", "character", rep("numeric", 7), "factor"))
 
-ggplot(virginiaTeamsInvestment, aes(x = WeightedCost, y = WeightedDistance)) + 
+ggplot(virginiaTeamsInvestment, aes(x = WeightedCost, y = log(WeightedDistance))) + 
         geom_point() + 
         geom_smooth(method = "lm", color = "coral1") +
         theme_TCR() +
