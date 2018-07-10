@@ -67,7 +67,7 @@ Demographic information for each census tract was gathered from the U.S. Census 
 
 ### Assigning Location Information to Fields
 
-To attribute an "average" location to each youth soccer club, I first had to match a set of coordinates to each field on which at least one game was played. I used functions from the `dplyr` package to combine all address variables into one, and the `street2coordinates` function from the `RDSTK` to translate those addresses into sets of coordinates.
+To attribute an "average" location to each youth soccer club, I first had to match a set of coordinates to each field on which at least one game was played. I used functions from the `dplyr` package to combine all address variables into one, and the `street2coordinates` function from the `RDSTK` package to translate those addresses into sets of coordinates.
 
 ``` {r allFieldsCoords, eval = FALSE}
 ## Import data from Excel file
@@ -473,7 +473,7 @@ As it turns out, the original assumption was incorrect. Competition level, finan
 ```{r virginiaInvestmentScatter, echo = FALSE, results = TRUE}
 virginiaTeamsInvestment <- read.csv("Process Files/virginiaTeamsInvestment.csv", na.strings = "", colClasses = c(rep("character", 4), "numeric", "character", rep("numeric", 7), "factor"))
 
-ggplot(virginiaTeamsInvestment, aes(x = WeightedCost, y = WeightedDistance)) + 
+ggplot(virginiaTeamsInvestment, aes(x = WeightedCost, y = log(WeightedDistance))) + 
         geom_point() + 
         geom_smooth(method = "lm", color = "coral1") +
         theme_TCR() +
