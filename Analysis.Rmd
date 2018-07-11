@@ -431,12 +431,17 @@ virginiaGamesGMaps <- virginiaGamesGMaps %>%
 virginiaGamesTeamsTravel <- cbind(virginiaGamesTeamsTravel, virginiaGamesGMaps)
 
 ## Summarize total travel by team
+virginiaGamesTeamsCostAwayCalcTravel <- virginiaGames %>% 
+        filter(AwayTeamID %in% virginiaTeamsCost$TeamID) %>% 
+        count(AwayTeamID) %>% 
+        dplyr::rename(TeamID = AwayTeamID, AwayGamesCount = n)
 virginiaGamesTeamsTravel <- virginiaGamesTeamsTravel %>% 
         group_by(AwayTeamID) %>% 
         summarize(Time = sum(Time), Distance = sum(Distance)) %>% 
         dplyr::rename(TeamID = AwayTeamID)
 virginiaGamesTeamsTravel <- virginiaGamesTeamsTravel %>% 
-        left_join(virginiaGamesTeamsCostAway)
+        left_join(virginiaGamesTeamsCostAwayCalcTravel)
+
 ```
 
 ### Weighting Cost, Distance, and Time by Games Played
